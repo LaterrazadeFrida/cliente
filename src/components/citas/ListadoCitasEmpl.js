@@ -47,7 +47,7 @@ const CitaEmpleado = () => {
                     </thead>
                     <tbody>
                         {citas ? (
-                            citas.filter(cita => cita.docEmpleado == usuario.documento).map(cita => (
+                            citas.filter(cita => cita.docEmpleado === usuario.documento).map(cita => (
                                 str = new Date(cita.horaInicio),
                                 str1 = new Date(cita.horaFin),
 

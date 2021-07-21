@@ -38,6 +38,7 @@ import NuevoCliente from './components/clientes/NuevoCliente';
 import Reportes from './components/reportes/Reportes';
 import ReporteState from './context/reportes/reporteState';
 import Puntos from './components/puntos/Puntos';
+import PuntosState from './context/puntaje/puntosState';
 Modal.setAppElement('#root');
 
 //Revisar si tenemos un token
@@ -52,6 +53,7 @@ function App() {
     <div >
       <CarouselContainer />
     </div>,
+    <PuntosState>
       <ReporteState>
         <ClienteState>
           <CitaState>
@@ -103,6 +105,7 @@ function App() {
           </CitaState>
         </ClienteState>
       </ReporteState>
+     </PuntosState>
   );
 }
 

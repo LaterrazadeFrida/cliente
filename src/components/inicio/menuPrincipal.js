@@ -28,7 +28,7 @@ const MenuPrincipal = () => {
 
                         <li><a href="/inicio">Inicio</a></li>
 
-                        {usuario?.rol !== '604e9ebe6e69f62dc4e181b6' ? (
+                        {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
                             <li><a href="/productos">Productos</a>
                                 <ul className="submenu">
                                     <li><a href="/productos">Lista de Productos</a></li>
@@ -37,7 +37,7 @@ const MenuPrincipal = () => {
                             </li>
                         ) : null}
 
-                        {usuario?.rol !== '604e9ebe6e69f62dc4e181b6' ? (
+                        {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
                             <li><a href="/servicios">Servicios</a>
                                 <ul className="submenu">
                                     <li><a href="/servicios">Lista de Servicios</a></li>
@@ -46,7 +46,7 @@ const MenuPrincipal = () => {
                             </li>
                         ) : null}
 
-                        {usuario?.rol !== '604e9ebe6e69f62dc4e181b6' ? (
+                        {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
                             <li><a href="/empleados">Empleados</a>
                                 <ul className="submenu">
                                     <li><a href="/empleados">Lista de Empleados</a></li>
@@ -55,18 +55,18 @@ const MenuPrincipal = () => {
                             </li>
                         ) : null}
 
-                        {usuario?.rol !== '604e9ebe6e69f62dc4e181b6' ? (
+                        {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
                             <li><a href="/clientes">Clientes</a>
                                 <ul className="submenu">
                                     <li><a href="/clientes">Lista de Clientes</a></li>
                                     <li><a href="/nuevo-cliente">Crear Cliente</a></li>
-                                    <li><a href="/puntos">Saldos</a></li>
+                                    <li><a href="/puntos">Puntajes</a></li>
 
                                 </ul>
                             </li>
                         ) : null}
 
-                        {usuario?.rol !== '604e9ebe6e69f62dc4e181b6' ? (
+                        {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
                             <li><a href="/agendamiento">Agendamiento</a>
                                 <ul className="submenu">
                                     <li><a href="/citas">Lista de Citas</a></li>
@@ -81,7 +81,7 @@ const MenuPrincipal = () => {
                             </li>
                         }
 
-                        {usuario?.rol !== '604e9ebe6e69f62dc4e181b6' ? (
+                        {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
                             <li><a href="/reportes">Reportes</a>
 
                                
