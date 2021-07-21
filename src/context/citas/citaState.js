@@ -7,17 +7,13 @@ import {
     ACTUALIZAR,
     OBTENER,
     ERROR,
-    ELIMINAR,
-    OBTENER_PUNTOS,
-    GUARDAR_PUNTAJE
+    ELIMINAR
 } from '../../types';
 
 const CitaState = props => {
 
     const initialState = {
         citas: [],
-        puntos: [],
-        puntaje: ''
 
     }
 
@@ -104,85 +100,16 @@ const CitaState = props => {
         }
     }
 
-    const liberacionPuntos = async cita => {
-        let calculo = (5 / 100) * cita.costo;
-
-        let puntos = ({
-            docCliente: cita.docCliente,
-            cantidad: calculo,
-            estado: 'Activo'
-        });
-
-        try {
-            const resultado = await clienteAxios.post('/api/puntos', puntos);
-
-        } catch (error) {
-
-        }
-
-    }
-
-    // Obtener las citas
-    const obtenerPuntaje = async () => {
-        try {
-            const resultado = await clienteAxios.get('/api/puntos');
-            dispatch({
-                type: OBTENER_PUNTOS,
-                payload: resultado.data.puntos
-            })
-        } catch (error) {
-            const alerta = {
-                msg: 'Hubo un error',
-                categoria: 'alerta-error'
-            }
-            dispatch({
-                type: ERROR,
-                payload: alerta
-            })
-        }
-    }
-
-    const actualizarPuntos = async puntos => {
-        try {
-            const resultado = await clienteAxios.put(`/api/puntos/${puntos._id}`, puntos);
-            dispatch({
-                type: ACTUALIZAR,
-                payload: resultado.data.puntos
-            })
-        } catch (error) {
-            const alerta = {
-                msg: 'Hubo un error',
-                categoria: 'alerta-error'
-            }
-            dispatch({
-                type: ERROR,
-                payload: alerta
-            })
-        }
-    }
-
-    const guardarPuntaje = async puntosCliente => {
-        dispatch({
-            type: GUARDAR_PUNTAJE,
-            payload: puntosCliente
-        })
-    }
-
+   
 
     return (
         <citaContext.Provider
             value={{
                 citas: state.citas,
-                puntos: state.puntos,
-                puntaje: state.puntaje,
                 obtenerCitas,
                 eliminacionCita,
                 actualizarCita,
-                obtenerCitasEmpleado,
-                liberacionPuntos,
-                obtenerPuntaje,
-                actualizarPuntos,
-                guardarPuntaje
+                obtenerCitasEmpleado
             }}
         >
             {props.children}

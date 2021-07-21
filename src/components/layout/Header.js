@@ -62,7 +62,7 @@ const Header = () => {
                         </li>
                         {usuario ? (
                             <li >
-                                {usuario ? <p className="nombre-usuario menos-ancho" >Bienvenid@  <span>{usuario?.nombres} </span> </p> : null}
+                                {usuario ? <p className="nombre-usuario menos-ancho" >Hola,   <span>{usuario?.nombres} </span> </p> : null}
                             </li>
                         ) : null}
                     </div>
