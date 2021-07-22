@@ -2,17 +2,12 @@ import React, { Fragment, useState, useEffect, useContext } from 'react';
 import CitaContext from '../../context/citas/citaContext';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import ProductoContext from '../../context/productos/productoContext';
+import InsumoContext from '../../context/insumos/insumoContext';
 import { makeStyles } from '@material-ui/core/styles';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-
 
 import {
     Table,
@@ -71,11 +66,13 @@ const ListadoCitas = () => {
     const [modalLiberacion, setModalLiberacion] = useState(false);
     const [modalProducto, setModalProducto] = useState(false);
     const [gasto, guardarGasto] = useState({
-        nombreProducto: '',
+        idProducto: '',
         idCita: '',
         medida: '',
         cantidad: ''
     });
+
+    const {idProducto, idCita, medida, cantidad} = gasto;
 
     const [eliminable, guardarEliminable] = useState('');
     const [cita, guardarCita] = useState({
@@ -89,13 +86,15 @@ const ListadoCitas = () => {
         Estado: ''
     });
 
+
     const citaContext = useContext(CitaContext);
+    const insumoContext = useContext(InsumoContext);
 
     const { obtenerCitas, citas, eliminacionCita, actualizarCita,liberacionPuntos } = citaContext;
     const productoContext = useContext(ProductoContext);
 
     const { productos, obtenerProductos } = productoContext;
-
+    const { ActualizandoInsumos } = insumoContext;
 
     const [consulta, guardarConsulta] = useState({
         consult: ''
@@ -116,6 +115,16 @@ const ListadoCitas = () => {
         const { name, value } = e.target;
         guardarConsulta({
             ...consulta,
+            [name]: value
+        })
+
+    }
+
+    const onChangeInventario= e => {
+
+        const { name, value } = e.target;
+        guardarGasto({
+            ...gasto,
             [name]: value
         })
 
@@ -165,6 +174,11 @@ const ListadoCitas = () => {
     const mostrarModalProducto = (cita) => {
         setModalProducto(true);
         guardarCita(cita);
+    }
+
+    const actualizarInsumos = (gasto) => {
+        gasto.idCita = cita._id;
+        ActualizandoInsumos(gasto);
     }
 
 
@@ -346,6 +360,8 @@ const ListadoCitas = () => {
                             required
                             className="form-control"
                             name="idProducto"
+                            value={idProducto}
+                            onChange={onChangeInventario} 
                         >
                             <option>--Seleccione--</option>
                             {productos ? (
@@ -366,10 +382,13 @@ const ListadoCitas = () => {
                         <select
                             required
                             className="form-control"
-                            name="idProducto"
+                            name="medida"
+                            value={medida}
+                            onChange={onChangeInventario} 
+
                         >
                             <option >--Selecccione--</option>
-                            <option value='ML'>ML / GR</option>
+                            <option value='GR'>GR</option>
                             <option value='Unidad'>Unidad</option>
                         </select>
                     </FormGroup>
@@ -379,7 +398,10 @@ const ListadoCitas = () => {
                             required
                             className="form-control"
                             name="cantidad"
+                            value={cantidad}
                             type="number"
+                            onChange={onChangeInventario} 
+
                         />
                     </FormGroup>
 
@@ -387,7 +409,7 @@ const ListadoCitas = () => {
                 <ModalFooter>
                     <Button
                         color="primary"
-                        onClick={() => eliminarCita(eliminable)}
+                        onClick={() => actualizarInsumos(gasto)}
                     > Aceptar</Button>
 
                     <Button
