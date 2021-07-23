@@ -28,7 +28,7 @@ const ListadoProductos = () => {
 
     const productoContext = useContext(ProductoContext);
     /** */
-    const { productos, obtenerProductos, actualizarProducto } = productoContext;
+    const { productos, obtenerProductos, actualizarProducto, mensajeConfirmación } = productoContext;
 
 
     const [consulta, guardarConsulta] = useState({
@@ -123,7 +123,8 @@ const ListadoProductos = () => {
 
 
     return (
-        <Fragment>
+        <Fragment>  
+       
             <div className="contenedor-basico sombra-dark">
                 <h1>Listado de Productos</h1>
 
@@ -148,7 +149,7 @@ const ListadoProductos = () => {
                                 <th>Nombre</th>
                                 <th>Unidad de Medida</th>
                                 <th>Precio</th>
-                                <th>Unidades</th>
+                                <th>Cantidad</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>

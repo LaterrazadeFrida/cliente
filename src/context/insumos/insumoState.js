@@ -4,7 +4,7 @@ import insumoReducer from './insumoReducer';
 
 import {
 
-    ERROR,ACTUALIZAR
+    ERROR,ACTUALIZAR, LIMPIAR
 } from '../../types';
 
 import clienteAxios from '../../config/axios';
@@ -13,7 +13,8 @@ import clienteAxios from '../../config/axios';
 const InsumoState = props => {
 
     const initialState = {
-       insumos: []
+       insumos: [],
+       mensajeConfirmación: ""
     }
     // Dispatch para ejecutar las acciones
     const [state, dispatch] = useReducer(insumoReducer, initialState);
@@ -30,7 +31,7 @@ const InsumoState = props => {
             dispatch({
                 type: ACTUALIZAR,
                 payload: resultado.data
-            })
+            });
         } catch (error) {
             const alerta = {
                 msg: 'Hubo un error',
@@ -43,11 +44,19 @@ const InsumoState = props => {
         }
     }
 
+    const limpiarMensajes = () => {
+        dispatch({
+            type: LIMPIAR
+        });
+    }
+
 
     return (
         <insumoContext.Provider
             value={{
-                ActualizandoInsumos
+                mensajeConfirmación: state.mensajeConfirmación,
+                ActualizandoInsumos,
+                limpiarMensajes
             }}
         >
             {props.children}
