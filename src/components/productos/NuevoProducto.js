@@ -134,11 +134,6 @@ const NuevoProducto = () => {
       return;
     }
 
-    if (disponibles <= 0 || disponibles > 50) {
-      mostrarError("La cantidad de unidades debe ser mayor a 0 y menor a 50");
-      return;
-    }
-
     agregarProducto(producto);
 
     limpiarForm();

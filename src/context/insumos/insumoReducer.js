@@ -1,35 +1,39 @@
 import {
-    OBTENER_PUNTOS,
-    GUARDAR_PUNTAJE,
-    ACTUALIZAR_PUNTOS,
-    ELIMINAR,
-  } from "../../types";
-  
-  export default (state, action) => {
-    switch (action.type) {
-      case OBTENER_PUNTOS:
-        return {
-          ...state,
-          puntos: action.payload,
-        };
-      case GUARDAR_PUNTAJE:
-        return {
-          ...state,
-          puntaje: action.payload,
-        };
-  
-      case ACTUALIZAR_PUNTOS:
-        return {
-          ...state,
-          puntaje: action.payload,
-        };
-      case ELIMINAR:
-        return {
-          ...state,
-          puntos: state.puntos.filter((punto) => punto._id !== action.payload),
-        };
-      default:
-        return state;
-    }
-  };
-  
+  OBTENER_PUNTOS,
+  GUARDAR_PUNTAJE,
+  LIMPIAR,
+  ELIMINAR,
+  ACTUALIZAR,
+} from "../../types";
+
+export default (state, action) => {
+  switch (action.type) {
+    case OBTENER_PUNTOS:
+      return {
+        ...state,
+        puntos: action.payload,
+      };
+    case GUARDAR_PUNTAJE:
+      return {
+        ...state,
+        puntaje: action.payload,
+      };
+    case ELIMINAR:
+      return {
+        ...state,
+        puntos: state.puntos.filter((punto) => punto._id !== action.payload),
+      };
+    case ACTUALIZAR:
+      return {
+        ...state,
+        mensajeConfirmación: action.payload,
+      };
+    case LIMPIAR:
+      return {
+        ...state,
+        mensajeConfirmación: "",
+      };
+    default:
+      return state;
+  }
+};

@@ -8,6 +8,7 @@ import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import Alert from '@material-ui/lab/Alert';
 
 import {
     Table,
@@ -94,7 +95,7 @@ const ListadoCitas = () => {
     const productoContext = useContext(ProductoContext);
 
     const { productos, obtenerProductos } = productoContext;
-    const { ActualizandoInsumos } = insumoContext;
+    const { ActualizandoInsumos ,mensajeConfirmación, limpiarMensajes} = insumoContext;
 
     const [consulta, guardarConsulta] = useState({
         consult: ''
@@ -121,23 +122,19 @@ const ListadoCitas = () => {
     }
 
     const onChangeInventario= e => {
-
         const { name, value } = e.target;
         guardarGasto({
             ...gasto,
             [name]: value
         })
-
     }
 
     const eliminarCita = (cita) => {
         eliminacionCita(cita);
         setModalEliminar(false);
-
     }
 
     const cambiarEstado = cita => {
-
         switch (cita.Estado) {
             case 'Pendiente':
                 cita.Estado = 'Incumplida';
@@ -177,8 +174,17 @@ const ListadoCitas = () => {
     }
 
     const actualizarInsumos = (gasto) => {
+        limpiarMensajes();
         gasto.idCita = cita._id;
         ActualizandoInsumos(gasto);
+
+        guardarGasto({
+            idProducto: '',
+            idCita: '',
+            medida: '',
+            cantidad: ''
+        })
+        setModalProducto(false);
     }
 
 
@@ -189,6 +195,7 @@ const ListadoCitas = () => {
 
     return (
         <Fragment>
+       {mensajeConfirmación ? ( <Alert severity="success">{mensajeConfirmación}</Alert> )  : null}
             <div className="contenedor-basico sombra-dark">
                 <h1>Listado de Citas</h1>
                 <div className="barraBusqueda">
