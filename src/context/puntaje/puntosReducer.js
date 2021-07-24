@@ -3,6 +3,7 @@ import {
   GUARDAR_PUNTAJE,
   ACTUALIZAR_PUNTOS,
   ELIMINAR,
+  LIMPIAR
 } from "../../types";
 
 export default (state, action) => {
@@ -28,6 +29,11 @@ export default (state, action) => {
         ...state,
         puntos: state.puntos.filter((punto) => punto._id !== action.payload),
       };
+      case LIMPIAR:
+        return {
+          ...state,
+          puntaje: ''
+        }
     default:
       return state;
   }

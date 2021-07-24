@@ -123,7 +123,7 @@ const ListadoEmpleados = () => {
         <Fragment>
             <div className="contenedor-basico sombra-dark">
                 <h1>Listado de Empleados</h1>
-                <div className="barraBusqueda">
+                <div className="barraBusqueda mb-5">
                     <input
                         type="text"
                         placeholder="Buscar"
@@ -170,7 +170,7 @@ const ListadoEmpleados = () => {
 
                                         <td>
                                             <button
-                                                className="btn btn-primary"
+                                                className="btn btn-primary btn-sm"
                                                 onClick={() => mostrarModalActualizar(empleado)}
                                             > <EditIcon /></button>{"  "}
                                         </td>

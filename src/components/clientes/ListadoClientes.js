@@ -69,7 +69,7 @@ const ListadoClientes = () => {
         <Fragment>
             <div className="contenedor-basico sombra-dark">
                 <h1>Listado de Clientes</h1>
-                <div className="barraBusqueda">
+                <div className="barraBusqueda mb-5">
                     <input
                         type="text"
                         placeholder="Buscar"

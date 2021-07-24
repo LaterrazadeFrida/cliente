@@ -3,6 +3,7 @@ import CitaContext from '../../context/citas/citaContext';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import ProductoContext from '../../context/productos/productoContext';
 import InsumoContext from '../../context/insumos/insumoContext';
+import PuntosContext from '../../context/puntaje/puntosContext';
 import { makeStyles } from '@material-ui/core/styles';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
@@ -90,12 +91,14 @@ const ListadoCitas = () => {
 
     const citaContext = useContext(CitaContext);
     const insumoContext = useContext(InsumoContext);
+    const puntosContext = useContext(PuntosContext);
 
-    const { obtenerCitas, citas, eliminacionCita, actualizarCita,liberacionPuntos } = citaContext;
+    const { obtenerCitas, citas, eliminacionCita, actualizarCita } = citaContext;
     const productoContext = useContext(ProductoContext);
 
     const { productos, obtenerProductos } = productoContext;
-    const { ActualizandoInsumos ,mensajeConfirmación, limpiarMensajes} = insumoContext;
+    const { ActualizandoInsumos ,mensajeConfirmación, limpiarMensajes ,mensajeError} = insumoContext;
+    const {liberacionPuntos} = puntosContext;
 
     const [consulta, guardarConsulta] = useState({
         consult: ''
@@ -169,6 +172,7 @@ const ListadoCitas = () => {
     }
 
     const mostrarModalProducto = (cita) => {
+        limpiarMensajes();
         setModalProducto(true);
         guardarCita(cita);
     }
@@ -196,9 +200,11 @@ const ListadoCitas = () => {
     return (
         <Fragment>
        {mensajeConfirmación ? ( <Alert severity="success">{mensajeConfirmación}</Alert> )  : null}
+       {mensajeError ? ( <Alert severity="error">{mensajeError.msg}</Alert> )  : null}
+
             <div className="contenedor-basico sombra-dark">
                 <h1>Listado de Citas</h1>
-                <div className="barraBusqueda">
+                <div className="barraBusqueda mb-5">
                     <input
                         type="number"
                         placeholder="Buscar"
@@ -233,11 +239,10 @@ const ListadoCitas = () => {
 
                                     cita.horaInicio = str.toString(),
                                     cita.horaFin = str1.toString(),
-
                                     <tr key={cita._id}>
                                         <td>
                                             <a
-                                                className="btn btn-info espaciado"
+                                                className="btn btn-info espaciado btn-sm"
                                                 data-toggle="tooltip"
                                                 title="Añadir"
                                                 onClick={() => mostrarModalProducto(cita)}
@@ -251,17 +256,16 @@ const ListadoCitas = () => {
                                         <td>{cita.costo}</td>
                                         <td>{cita.Estado}</td>
                                         <td>
-
                                             {cita.Estado === 'Pendiente' ? (
                                                 <a
-                                                    className="btn btn-info espaciado"
+                                                    className="btn btn-info espaciado btn-sm"
                                                     onClick={() => mostrarModalIncumplimiento(cita)}
                                                 > <ContactSupportIcon /> </a>
 
                                             ) : null}
                                             {cita.Estado === 'Incumplida' ? (
                                                 <a
-                                                    className="btn btn-secondary espaciado"
+                                                    className="btn btn-secondary espaciado btn-sm"
                                                     onClick={() => mostrarModalLiberacion(cita)}
                                                 > <HighlightOffIcon /> </a>
 
@@ -269,13 +273,13 @@ const ListadoCitas = () => {
 
                                             {cita.Estado === 'Cumplida' ? (
                                                 <a
-                                                    className="btn btn-success espaciado"
+                                                    className="btn btn-success espaciado btn-sm"
                                                 > <AssignmentTurnedInIcon /> </a>
 
                                             ) : null}
 
                                             <a
-                                                className="btn btn-danger"
+                                                className="btn btn-danger btn-sm"
                                                 data-toggle="tooltip"
                                                 title="Eliminar"
                                                 onClick={() => mostrarModalEliminar(cita)}
