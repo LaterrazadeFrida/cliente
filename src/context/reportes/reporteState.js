@@ -11,7 +11,10 @@ import {
     ABRIR_MODAL_EDAD,
     CERRAR_MODAL_EDAD,
     AGREGAR_EDADES,
-    LIMPIAR_EDADES
+    LIMPIAR_EDADES,
+    ABRIR_MODAL_PRODUCTO,
+    CERRAR_MODAL_PRODUCTOS,
+    OBTENER
 } from '../../types';
 
 import clienteAxios from '../../config/axios';
@@ -25,7 +28,9 @@ const ReporteState = props => {
         mensaje: null,
         abrirModalGanancias: false,
         abrirModalEdades: false,
-        segmentacion: []
+        abrirModalProductos: false,
+        segmentacion: [],
+        productos: []
     }
     // Dispatch para ejecutar las acciones
     const [state, dispatch] = useReducer(reporteReducer, initialState);
@@ -35,8 +40,6 @@ const ReporteState = props => {
     const generarReporte = async rango => {
         try {
             const resultado = await clienteAxios.post('/api/reportes', rango);
-            console.log(resultado);
-
             dispatch({
                 type: AGREGAR,
                 payload: resultado.data
@@ -51,8 +54,26 @@ const ReporteState = props => {
             })
         }
     }
+
+    const generarReporteProductos = async rango => {
+        try {
+            const resultado = await clienteAxios.post('/api/reporte-productos', rango);
+            dispatch({
+                type: OBTENER,
+                payload: resultado.data
+            })
+        } catch (error) {
+            const alerta = {
+                msg: error.response?.data.msg
+            }
+            dispatch({
+                type: ERROR,
+                payload: alerta
+            })
+        }
+    }
+
     const generarReporteEdades = async rango => {
-        console.log(rango);
         try {
             const resultado = await clienteAxios.post('/api/reporte-edades', rango);
             console.log(resultado);
@@ -84,6 +105,12 @@ const ReporteState = props => {
         })
     }
 
+    const mostrarModalProducto = () => {
+        dispatch({
+            type: ABRIR_MODAL_PRODUCTO
+        })
+    }
+
     const cerrarModalGanancias = negativo => {
         dispatch({
             type: CERRAR_MODAL,
@@ -94,6 +121,13 @@ const ReporteState = props => {
     const cerrarModalEdades = negativo => {
         dispatch({
             type: CERRAR_MODAL_EDAD,
+            payload: negativo
+        })
+    }
+
+    const cerrarModalProductos = negativo => {
+        dispatch({
+            type: CERRAR_MODAL_PRODUCTOS,
             payload: negativo
         })
     }
@@ -119,6 +153,8 @@ const ReporteState = props => {
                 mensaje: state.mensaje,
                 abrirModalEdades: state.abrirModalEdades,
                 segmentacion: state.segmentacion,
+                abrirModalProductos: state.abrirModalProductos,
+                productos: state.productos,
                 generarReporte,
                 mostrarModalGanancias,
                 cerrarModalGanancias,
@@ -126,7 +162,10 @@ const ReporteState = props => {
                 mostrarModalEdades,
                 cerrarModalEdades,
                 generarReporteEdades,
-                limpiarReporteEdades
+                limpiarReporteEdades,
+                mostrarModalProducto,
+                cerrarModalProductos,
+                generarReporteProductos
             }}
         >
             {props.children}

@@ -25,6 +25,7 @@ function buscandoFiltro(consult) {
 
 
 const ListadoProductos = () => {
+    let fechaForm;
 
     const productoContext = useContext(ProductoContext);
     /** */
@@ -150,6 +151,7 @@ const ListadoProductos = () => {
                                 <th>Unidad de Medida</th>
                                 <th>Precio</th>
                                 <th>Cantidad</th>
+                                <th>Fecha Compra</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
@@ -157,11 +159,15 @@ const ListadoProductos = () => {
                         <tbody>
                             {productos ? (
                                 productos.filter(buscandoFiltro(consult)).map(producto => (
+                                    fechaForm = new Date(producto.fechaCompra),
+                                    producto.fechaCompra = fechaForm.toDateString(),
+
                                     <tr key={producto._id}>
                                         <td>{producto.nombre}</td>
                                         <td>{producto.descripcion}</td>
                                         <td>{producto.precio}</td>
                                         <td>{producto.disponibles}</td>
+                                        <td>{producto.fechaCompra}</td>
                                         <td>{producto.estado}</td>
                                         <td>
                                             <button
