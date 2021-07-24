@@ -11,11 +11,9 @@ import Alert from '@material-ui/lab/Alert';
 import {
     Table,
     Button,
-    Container,
     Modal,
     ModalHeader,
     ModalBody,
-    FormGroup,
     ModalFooter,
 } from "reactstrap";
 
@@ -117,6 +115,10 @@ const Edades = () => {
     const cerrarModal = () => {
         cerrarModalEdades(false);
         setModalEdades(false);
+        guardarRango({
+            fechaInicio: '',
+            fechaFinal: ''
+        })
     }
     
 

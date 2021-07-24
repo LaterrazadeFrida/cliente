@@ -36,6 +36,7 @@ export default (state, action) => {
         abrirModalGanancias: action.payload,
         mensajeConfirmación: "",
         citas: [],
+        productos: []
       };
     case CERRAR_MODAL_EDAD:
       return {
@@ -44,6 +45,8 @@ export default (state, action) => {
         mensajeConfirmación: "",
         citas: [],
         segmentacion: [],
+        productos: []
+
       };
     case AGREGAR:
       return {
@@ -53,6 +56,8 @@ export default (state, action) => {
         errorformulario: false,
         mensaje: null,
         segmentacion: [],
+        productos: []
+
       };
     case ERROR:
       return {
@@ -65,6 +70,8 @@ export default (state, action) => {
         mensaje: null,
         mensajeConfirmación: "",
         segmentacion: [],
+        productos: []
+
       };
     case AGREGAR_EDADES:
       return {
@@ -92,6 +99,8 @@ export default (state, action) => {
         mensaje: null,
         mensajeConfirmación: "",
         citas: [],
+        productos: []
+
       };
     case CERRAR_MODAL_PRODUCTOS:
       return {
