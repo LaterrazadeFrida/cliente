@@ -48,20 +48,14 @@ const ValidarUsuario = () => {
             <form
                 onSubmit={onSubmit}
             >
-                {mensaje ?
-                    (
-                        <Alert severity="error">{mensaje.msg}</Alert>
-
-                    )
-                    : null}
-
+                {mensaje ?  ( <Alert severity="error">{mensaje.msg}</Alert>) : null}
                 <div className="contenedor-basico sombra-dark">
                     <div className="flex-med">
                         <button
-                            className="btn btn-success boton"
+                            className="btn btn-outline-success mt-0 mr-2 btn-sm"
                             type="submit"
                         ><AssignmentTurnedInIcon /></button>
-                        <div className="barraBusqueda">
+                        <div className="barraBusqueda mr-4">
                             <input
                                 type="number"
                                 placeholder="N° Documento"
@@ -74,16 +68,9 @@ const ValidarUsuario = () => {
                     </div>
                     <br></br>
                     <Container >
-
-                        {usuarioConfirmado ? (
-
-                            <h5>{usuarioConfirmado.nombres}</h5>
-                        )
-                            : null}
-
+                        {usuarioConfirmado ? ( <h5>{usuarioConfirmado.nombres}</h5>   )   : null}
                     </Container>
                 </div>
-
             </form>
         </Fragment >
     );

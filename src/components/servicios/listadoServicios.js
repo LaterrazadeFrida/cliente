@@ -112,7 +112,7 @@ const ListadoServicios = () => {
 
                 <h1>Listado de Servicios</h1>
 
-                <div className="barraBusqueda">
+                <div className="barraBusqueda mb-5">
                     <input
                         type="text"
                         placeholder="Buscar"
@@ -146,18 +146,14 @@ const ListadoServicios = () => {
                                         <td>{servicio.tipo}</td>
                                         <td>
                                             <button
-                                                className="btn btn-primary"
+                                                className="btn btn-primary btn-sm"
                                                 onClick={() => mostrarModalActualizar(servicio)}
                                             > <EditIcon /></button>{"  "}
-
-
                                         </td>
-
                                     </tr>
                                 )))
                                 :
                                 null}
-
                         </tbody>
                     </Table>
                 </Container>
@@ -166,7 +162,6 @@ const ListadoServicios = () => {
                 <ModalHeader>
                     <div><h3>Editar Servicio</h3></div>
                 </ModalHeader>
-
                 <ModalBody>
                     <FormGroup>
                         <label>Nombre</label>

@@ -128,7 +128,7 @@ const ListadoProductos = () => {
             <div className="contenedor-basico sombra-dark">
                 <h1>Listado de Productos</h1>
 
-                <div className="barraBusqueda">
+                <div className="barraBusqueda mb-5">
                     <input
 
                         type="text"
@@ -165,19 +165,19 @@ const ListadoProductos = () => {
                                         <td>{producto.estado}</td>
                                         <td>
                                             <button
-                                                className="btn btn-primary"
+                                                className="btn btn-primary btn-sm"
                                                 onClick={() => mostrarModalActualizar(producto)}
                                             > <EditIcon /></button>{"  "}
 
                                             {producto.estado === 'Activo' ? (
                                                 <button
-                                                    className="btn btn-success"
+                                                    className="btn btn-success btn-sm"
                                                     onClick={() => cambiarEstado(producto)}
                                                 ><AssignmentTurnedInIcon /></button>
                                             ) :
                                                 (
                                                     <button
-                                                        className="btn btn-danger"
+                                                        className="btn btn-danger btn-sm"
                                                         onClick={() => cambiarEstado(producto)}
                                                     > <HighlightOffIcon /> </button>
 

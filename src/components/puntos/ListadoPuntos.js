@@ -35,6 +35,7 @@ const ListadoPuntos = () => {
     guardarPuntaje,
     puntaje,
     eliminarPuntuacion,
+    limpiarPuntaje
   } = puntosContext;
 
   const [consulta, guardarConsulta] = useState({
@@ -94,14 +95,22 @@ const ListadoPuntos = () => {
       }
     });
 
-    console.log(puntajeTotal);
-
     guardarPuntaje(puntajeTotal);
   };
 
   const eliminarPuntaje = (punto) => {
     eliminarPuntuacion(punto._id);
   };
+
+  const cerrarModal = () => {
+    limpiarPuntaje();
+    setModalCalcular(false);
+    guardarCliente({
+      documento: ""
+    })
+
+}
+
 
   // revisar si puntos tiene contenido
   if (puntos.length === 0) {
@@ -140,8 +149,7 @@ const ListadoPuntos = () => {
               </tr>
             </thead>
             <tbody>
-              {puntos
-                ? puntos.filter(buscandoFiltro(consult)).map(
+              {puntos ? puntos.filter(buscandoFiltro(consult)).map(
                     (punto) => (
                       (str1 = new Date(punto.creado)),
                       (punto.creado = str1.toDateString()),
@@ -154,14 +162,14 @@ const ListadoPuntos = () => {
                           <td>
                             {punto.estado === "Activo" ? (
                               <button
-                                className="btn btn-success"
+                                className="btn btn-success mr-3"
                                 onClick={() => cambiarEstado(punto)}
                               >
                                 <AssignmentTurnedInIcon />{" "}
                               </button>
                             ) : (
                               <button
-                                className="btn btn-secondary"
+                                className="btn btn-secondary mr-3"
                                 onClick={() => cambiarEstado(punto)}
                               >
                                 <HighlightOffIcon />{" "}
@@ -213,7 +221,7 @@ const ListadoPuntos = () => {
             <Button color="primary" onClick={() => calcularPuntaje()}>
               Calcular
             </Button>
-            <Button color="danger" onClick={() => setModalCalcular(false)}>
+            <Button color="danger" onClick={() => cerrarModal(false)}>
               {" "}
               Cancelar{" "}
             </Button>

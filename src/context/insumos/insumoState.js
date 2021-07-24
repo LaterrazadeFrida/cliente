@@ -14,7 +14,8 @@ const InsumoState = props => {
 
     const initialState = {
        insumos: [],
-       mensajeConfirmación: ""
+       mensajeConfirmación: '',
+       mensajeError: ''
     }
     // Dispatch para ejecutar las acciones
     const [state, dispatch] = useReducer(insumoReducer, initialState);
@@ -24,8 +25,6 @@ const InsumoState = props => {
 
     // Edita o modifica los insumos
     const ActualizandoInsumos = async gasto => {
-        console.log(gasto);
-
         try {
             const resultado = await clienteAxios.put(`/api/insumos/${gasto.idProducto}`, gasto);
             dispatch({
@@ -34,8 +33,7 @@ const InsumoState = props => {
             });
         } catch (error) {
             const alerta = {
-                msg: 'Hubo un error',
-                categoria: 'alerta-error'
+                msg: error.response?.data.msg
             }
             dispatch({
                 type: ERROR,
@@ -55,6 +53,7 @@ const InsumoState = props => {
         <insumoContext.Provider
             value={{
                 mensajeConfirmación: state.mensajeConfirmación,
+                mensajeError: state.mensajeError,
                 ActualizandoInsumos,
                 limpiarMensajes
             }}

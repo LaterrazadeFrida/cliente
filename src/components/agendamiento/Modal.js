@@ -183,12 +183,8 @@ const Modales = () => {
         cita.docCliente = usuarioConfirmado.documento;
         cita.Servicio = servicioSeleccionado.nombre;
         cita.Estado = estado[0].nombreEstado;
-        console.log(cita);
-
         guardarAgendamiento(cita);
-
         LimpiarForm();
-
     }
 
     const LimpiarForm = () => {
@@ -280,9 +276,6 @@ const Modales = () => {
                                                         null}
                                                 </Select>
                                             </FormControl>
-                                            <button className="btn btn-danger"
-                                                onClick={() => eliminarServicio(servicioSeleccionado)}
-                                            ><HighlightOffIcon /></button>
                                         </Grid>
                                     </Card.Body>
                                     <Card.Footer>

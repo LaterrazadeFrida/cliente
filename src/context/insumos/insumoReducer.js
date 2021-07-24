@@ -4,6 +4,7 @@ import {
   LIMPIAR,
   ELIMINAR,
   ACTUALIZAR,
+  ERROR
 } from "../../types";
 
 export default (state, action) => {
@@ -31,8 +32,14 @@ export default (state, action) => {
     case LIMPIAR:
       return {
         ...state,
-        mensajeConfirmación: "",
+        mensajeConfirmación: '',
+        mensajeError: ''
       };
+      case ERROR:
+        return {
+          ...state,
+          mensajeError: action.payload
+        }
     default:
       return state;
   }

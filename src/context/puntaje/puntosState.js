@@ -7,7 +7,8 @@ import {
     GUARDAR_PUNTAJE,
     ACTUALIZAR_PUNTOS,
     ERROR,
-    ELIMINAR
+    ELIMINAR,
+    LIMPIAR
 } from '../../types';
 
 import clienteAxios from '../../config/axios';
@@ -110,6 +111,12 @@ const PuntosState = props => {
         }
     }
 
+    const limpiarPuntaje = () => {
+        dispatch({
+            type: LIMPIAR
+        })
+    }
+
     return (
         <puntosContext.Provider
             value={{
@@ -119,7 +126,8 @@ const PuntosState = props => {
                 obtenerPuntaje,
                 actualizarPuntos,
                 guardarPuntaje,
-                eliminarPuntuacion         
+                eliminarPuntuacion,
+                limpiarPuntaje        
             }}
         >
             {props.children}
