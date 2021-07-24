@@ -87,12 +87,12 @@ const NuevoProducto = () => {
     nombre: "",
     descripcion: "",
     precio: "",
-    fecha: "",
+    fechaCompra: "",
     disponibles: "",
     estado: "",
   });
 
-  const { nombre, descripcion, precio, fecha, disponibles, estado } = producto;
+  const { nombre, descripcion, precio, fechaCompra, disponibles, estado } = producto;
 
   // Lee los contenidos del input
   const onChangeProducto = (evento) => {
@@ -100,7 +100,7 @@ const NuevoProducto = () => {
     const { name, value } = evento.target;
 
     //expresion regular que no permite que en campos de texto se escriban numeros
-    if (name !== "disponibles" && name !== "precio" && name !== "descripcion" && name !== "fecha") {
+    if (name !== "disponibles" && name !== "precio" && name !== "descripcion" && name !== "fechaCompra") {
       let regex = new RegExp("^[ñíóáéú a-zA-Z ]+$");
       for (let i = 0; i <= value.length - 1; i++) {
         let letra = value[i];
@@ -145,7 +145,7 @@ const NuevoProducto = () => {
       nombre: "",
       descripcion: "",
       precio: "",
-      fecha: "",
+      fechaCompra: "",
       disponibles: "",
       estado: "",
     });
@@ -195,7 +195,7 @@ const NuevoProducto = () => {
                     required
                     id="precio"
                     name="precio"
-                    label="Valor de la unidad (medida)"
+                    label="Costo de la unidad"
                     value={precio}
                     className={classes.root}
                     fullWidth
@@ -229,9 +229,9 @@ const NuevoProducto = () => {
                   <TextField
                     required
                     type="date"
-                    id="fecha"
-                    name="fecha"
-                    value={fecha}
+                    id="fechaCompra"
+                    name="fechaCompra"
+                    value={fechaCompra}
                     className={classes.textField}
                     fullWidth
                     onChange={onChangeProducto}

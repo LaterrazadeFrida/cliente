@@ -2,12 +2,13 @@ import React, { useContext, Fragment } from 'react';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import ReporteContext from '../../context/reportes/reporteContext';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import BrushIcon from '@material-ui/icons/Brush';
 
 const ListadoReportes = () => {
 
     const reporteContext = useContext(ReporteContext);
 
-    const { mostrarModalGanancias, mostrarModalEdades } = reporteContext;
+    const { mostrarModalGanancias, mostrarModalEdades ,mostrarModalProducto} = reporteContext;
 
     const mostrarModal = () => {
         mostrarModalGanancias();
@@ -16,6 +17,9 @@ const ListadoReportes = () => {
     const mostrarModalEdad = () => {
         mostrarModalEdades();
 
+    }
+    const mostrarModalProductos = () => {
+        mostrarModalProducto();
     }
 
     return (
@@ -39,7 +43,7 @@ const ListadoReportes = () => {
                     <div className="col-md-4" >
                         <div className="d-flex flex-grow-1 align-items-center bg-hover-light p-4 rounded">
                             <div className="mr-4 flex-shrink-0 text-center" >
-                                <a className="icon"><i className="icon-2x text-dark-50 la la-th-large"></i></a>
+                            <button className="item-report" onClick={() => mostrarModalProductos()}><BrushIcon/></button>
                             </div> <div className="text-muted">Productos</div>
                         </div>
                     </div>

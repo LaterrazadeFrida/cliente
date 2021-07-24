@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ListadoReportes from './ListadoReportes';
 import Ganancias  from './ModalGanancias';
 import Edades from './ModalEdades';
+import Productos from './ModalProductos';
 const useStyles = makeStyles((theme) => ({
 
     appBar: {
@@ -31,6 +32,7 @@ const Reportes = () => {
                    <ListadoReportes/>
                    <Ganancias/>
                    <Edades/>
+                   <Productos/>
                 </main>
             </div>
         </div>
