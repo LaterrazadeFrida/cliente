@@ -86,23 +86,16 @@ const useStyles = makeStyles((theme) => ({
 const NuevoEmpleado = () => {
 
     const classes = useStyles();
-
-
     //obtener el state de empleados y todas sus funciones
     const empleadoContext = useContext(EmpleadoContext);
     const servicioContext = useContext(ServicioContext);
-
 
     //extraer objetos del state
     const { mostrarError, errorformulario,
         agregarEmpleado, limpiarEmpleado, mensajeConfirmación, mensaje,limpiarAlert } = empleadoContext;
 
-
     const { tipos, obtenerTipos } = servicioContext;
-
-
     // Effect que detecta si hay un empleado seleccionado
-
     useEffect(() => {
         obtenerTipos();
         // eslint-disable-next-line

@@ -76,7 +76,6 @@ const ReporteState = props => {
     const generarReporteEdades = async rango => {
         try {
             const resultado = await clienteAxios.post('/api/reporte-edades', rango);
-            console.log(resultado);
             dispatch({
                 type: AGREGAR_EDADES,
                 payload: resultado.data

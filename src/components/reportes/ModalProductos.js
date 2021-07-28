@@ -96,6 +96,7 @@ const ModalProductos = () => {
     const cerrarModal = () => {
         cerrarModalProductos(false);
         setModalProductos(false);
+        
     }
 
     return (
