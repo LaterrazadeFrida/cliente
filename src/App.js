@@ -40,6 +40,7 @@ import ReporteState from "./context/reportes/reporteState";
 import Puntos from "./components/puntos/Puntos";
 import PuntosState from "./context/puntaje/puntosState";
 import InsumoState from "./context/insumos/insumoState";
+import ServiciosParaClientes from "./components/servicios/ServiciosParaClientes";
 Modal.setAppElement("#root");
 
 //Revisar si tenemos un token
@@ -188,6 +189,7 @@ function App() {
                                         path="/"
                                         component={Principal}
                                       />
+                                      <Route exact path="/servicio-cliente" component={ServiciosParaClientes}/>
                                     </Switch>
                                   </Router>
                                 </AuthState>

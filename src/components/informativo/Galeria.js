@@ -1,6 +1,7 @@
 import React from 'react';
 import { Fragment } from 'react';
 import Barra from '../layout/Barra';
+import Header from '../layout/Header';
 import { RViewerTrigger, RViewer } from 'react-viewerjs';
 
 const Galeria = () => {
@@ -19,23 +20,26 @@ const Galeria = () => {
 
     return (
         <Fragment>
+            <Header />
             <Barra />
+            <div className="contenedor-galeria">
+            
             <br></br>
-            <br></br>
-            <h1>Galeria</h1>
-            <hr></hr>
+            {/* <h1 className="titulo-galeria">Galeria</h1>
+            <hr className="separador"></hr> */}
             <RViewer imageUrls={imagenes}>
-                <div style={{ display: 'flex', marginLeft:'20px', marginRight: '20px', marginTop: '40px' }}>
+                <div style={{ marginLeft:'30px', marginRight: '20px', marginTop: '20px' }}>
                     {imagenes.map((imagen, index) => {
                         return (
                             <RViewerTrigger index={index}>
-                                <img src={imagen} alt="Imagen"style={{ width: '150px', height: '150px', margin: '1%', border: '2px solid black' }} />
+                                <img className="cards-galeria" src={imagen} alt="Imagen" style={{ width: '315px', height: '315px', margin: '1%', border: '1px solid black' }} />
                             </RViewerTrigger>
                         )
                     })}
                 </div>
-
             </RViewer>
+            
+            </div>
         </Fragment>
     );
 }

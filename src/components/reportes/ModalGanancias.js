@@ -114,6 +114,10 @@ const Ganancias = () => {
     const cerrarModal = () => {
         cerrarModalGanancias(false);
         setModalGanancias(false);
+        guardarRango({
+            fechaInicio: '',
+            fechaFinal: ''
+        })
     }
 
     return (

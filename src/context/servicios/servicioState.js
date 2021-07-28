@@ -42,15 +42,7 @@ const ServicioState = props => {
         duracion: '',
         tipo: ''
     })
-    /*
-        const [pregunta, guardarPregunta] = useState({
-            id: '',
-            respuesta: ''
-        })
-    */
-    // Serie de funciones para el CRUD
-
-    // Obtener los servicios
+ // Obtener los servicios
     const obtenerServicios = async () => {
         try {
             const resultado = await clienteAxios.get('/api/servicios');
@@ -63,7 +55,6 @@ const ServicioState = props => {
                 msg: 'Hubo un error',
                 categoria: 'alerta-error'
             }
-
             dispatch({
                 type: ERROR,
                 payload: alerta
@@ -73,7 +64,6 @@ const ServicioState = props => {
 
     // Agregar nuevo proyecto
     const agregarServicio = async servicio => {
-
         try {
             const resultado = await clienteAxios.post('/api/servicios', servicio);
 
@@ -126,7 +116,7 @@ const ServicioState = props => {
 
     // Edita o modifica un servicio
     const actualizarServicio = async servicio => {
-
+        console.log(servicio);
         try {
             const resultado = await clienteAxios.put(`/api/servicios/${servicio._id}`, servicio);
             dispatch({
@@ -159,15 +149,13 @@ const ServicioState = props => {
             payload: alert
         })
     }
-
      // ver formulario registro de productos
      const mostrarFormulario = () => {
         dispatch({
             type: FORMULARIO
         })
     }
-
-
+    
     const obtenerTipos = async () => {
         try {
             const resultado = await clienteAxios.get('/api/tipos-servicios');

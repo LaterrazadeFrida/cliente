@@ -82,23 +82,17 @@ const ListadoProductos = () => {
             nombre: '',
             descripcion: '',
             precio: '',
-            foto: '',
+            fechaCompra: '',
             disponibles: '',
             estado: ''
         });
         setModalActualizar(false);
     }
-
     const editar = producto => {
         actualizarProducto(producto);
-
         setModalActualizar(false);
-
         alert("Producto actualizado con éxito");
-
     }
-
-
     const handleChange = (e) => {
         guardarEditable({
             ...editable,
@@ -234,32 +228,19 @@ const ListadoProductos = () => {
 
                         <FormGroup>
                             <label>Precio</label>
-
                             <input
                                 className="form-control"
                                 name="precio"
                                 type="number"
                                 value={precio}
                                 onChange={handleChange}
-
                             />
                         </FormGroup>
-
                         <FormGroup>
-                            <label>Foto</label>
-
-                            <input
-                                className="form-control"
-                                name="foto"
-                                type="text"
-                                value={foto}
-                                onChange={handleChange}
-                            />
+               
                         </FormGroup>
-
                         <FormGroup>
                             <label>Unidades</label>
-
                             <input
                                 className="form-control"
                                 name="disponibles"
@@ -270,7 +251,6 @@ const ListadoProductos = () => {
                         </FormGroup>
                         <FormGroup>
                             <label>Estado</label>
-
                             <input
                                 className="form-control"
                                 name="estado"
@@ -281,7 +261,6 @@ const ListadoProductos = () => {
                             />
                         </FormGroup>
                     </ModalBody>
-
                     <ModalFooter>
                         <Button
                             color="primary"

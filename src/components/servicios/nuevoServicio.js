@@ -121,6 +121,7 @@ const NuevoServicio = () => {
             ...servicio,
             [name]: value
         })
+        
 
     }
 
