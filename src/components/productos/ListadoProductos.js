@@ -46,10 +46,7 @@ const ListadoProductos = () => {
     })
 
     const [modalActualizar, setModalActualizar] = useState(false);
-
-
     const { consult } = consulta;
-
     const { nombre, descripcion, precio, foto, disponibles, estado } = editable;
 
     // Obtener proyectos cuando carga el componente
@@ -60,16 +57,13 @@ const ListadoProductos = () => {
     }, []);
 
     const onChangeBusqueda = e => {
-
         const { name, value } = e.target;
-
         guardarConsulta({
             ...consulta,
             [name]: value
         })
 
     }
-
 
     const mostrarModalActualizar = (producto) => {
         setModalActualizar(true);
@@ -119,13 +113,10 @@ const ListadoProductos = () => {
 
     return (
         <Fragment>  
-       
             <div className="contenedor-basico sombra-dark">
                 <h1>Listado de Productos</h1>
-
-                <div className="barraBusqueda mb-5">
+                <div className="barraBusqueda">
                     <input
-
                         type="text"
                         placeholder="Buscar"
                         className="textField"
@@ -133,9 +124,7 @@ const ListadoProductos = () => {
                         value={consult}
                         onChange={onChangeBusqueda}
                     />
-
                 </div>
-
                 <br></br>
                 <Container >
                     <Table className="table table-striped">
@@ -155,7 +144,6 @@ const ListadoProductos = () => {
                                 productos.filter(buscandoFiltro(consult)).map(producto => (
                                     fechaForm = new Date(producto.fechaCompra),
                                     producto.fechaCompra = fechaForm.toDateString(),
-
                                     <tr key={producto._id}>
                                         <td>{producto.nombre}</td>
                                         <td>{producto.descripcion}</td>
@@ -165,19 +153,19 @@ const ListadoProductos = () => {
                                         <td>{producto.estado}</td>
                                         <td>
                                             <button
-                                                className="btn btn-primary btn-sm"
+                                                className="btn btn-primary padding-button"
                                                 onClick={() => mostrarModalActualizar(producto)}
                                             > <EditIcon /></button>{"  "}
 
                                             {producto.estado === 'Activo' ? (
                                                 <button
-                                                    className="btn btn-success btn-sm"
+                                                    className="btn btn-success padding-button"
                                                     onClick={() => cambiarEstado(producto)}
                                                 ><AssignmentTurnedInIcon /></button>
                                             ) :
                                                 (
                                                     <button
-                                                        className="btn btn-danger btn-sm"
+                                                        className="btn btn-danger padding-button"
                                                         onClick={() => cambiarEstado(producto)}
                                                     > <HighlightOffIcon /> </button>
 
@@ -263,10 +251,12 @@ const ListadoProductos = () => {
                     </ModalBody>
                     <ModalFooter>
                         <Button
+                            className="padding-button"
                             color="primary"
                             onClick={() => editar(editable)}
                         >Editar</Button>
                         <Button
+                            className="padding-button"
                             color="danger"
                             onClick={() => cerrarModalActualizar()}
                         > Cancelar   </Button>

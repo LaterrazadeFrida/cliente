@@ -14,30 +14,18 @@ function buscandoFiltro(consult) {
 
 
 const ListadoClientes = () => {
-
-
     //instanciar context de empleado
     const clienteContext = useContext(ClienteContext);
-
 
     //extraer objetos y funciones del state de clientes
     const { clientes, mensaje, obtenerClientes } = clienteContext;
 
-
     const [consulta, guardarConsulta] = useState({
         consult: ''
     });
-
-
-
     const { consult } = consulta;
-
-
-
     // Obtener los clientes cuando carga el componente
     useEffect(() => {
-
-
         obtenerClientes();
         // eslint-disable-next-line
     }, [mensaje]);
@@ -59,11 +47,7 @@ const ListadoClientes = () => {
     if (clientes.length === 0) {
         return <p>No hay empleados, comienza creando uno</p>
     }
-
-
-
     let fechaForm;
-
 
     return (
         <Fragment>
@@ -98,10 +82,8 @@ const ListadoClientes = () => {
                         <tbody>
                             {clientes ? (
                                 clientes.filter(buscandoFiltro(consult)).map(cliente => (
-
                                     fechaForm = new Date(cliente.fecha),
                                     cliente.fecha = fechaForm.toDateString(),
-
                                     <tr key={cliente._id}>
                                         <td>{cliente.tipo}</td>
                                         <td>{cliente.documento}</td>
@@ -115,12 +97,10 @@ const ListadoClientes = () => {
                                 )))
                                 :
                                 null}
-
                         </tbody>
                     </Table>
                 </Container>
             </div>
-
         </Fragment>
     );
 }

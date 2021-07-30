@@ -16,7 +16,6 @@ import Card from "react-bootstrap/Card";
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Alert from '@material-ui/lab/Alert';
 import {
     Button,
@@ -117,14 +116,6 @@ const Modales = () => {
         CerrarModal(false);
 
     }
-
-
-    const eliminarServicio = servicio => {
-        eliminarSeleccion(servicio._id);
-
-    }
-
-
     const onChange = evento => {
         const { name, value } = evento.target;
 
@@ -134,7 +125,6 @@ const Modales = () => {
         })
 
         limpiarAlert();
-
     }
 
     const consultar = () => {
@@ -331,13 +321,16 @@ const Modales = () => {
                 </div>
                 <ModalFooter>
                     <Button
+                        className="padding-button"
                         color="primary"
                         onClick={() => consultar()}
                     >Ver Citas</Button>
                     <Button
+                        className="padding-button"
                         type="submit"
                         color="info">Agendar</Button>
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => cerrarModalActualizar()}
                     > Cancelar </Button>

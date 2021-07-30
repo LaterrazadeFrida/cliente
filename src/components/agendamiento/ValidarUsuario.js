@@ -52,7 +52,7 @@ const ValidarUsuario = () => {
                 <div className="contenedor-basico sombra-dark">
                     <div className="flex-med">
                         <button
-                            className="btn btn-outline-success mt-0 mr-2 btn-sm"
+                            className="btn btn-outline-success mt-0 mr-2 btn-sm padding-button"
                             type="submit"
                         ><AssignmentTurnedInIcon /></button>
                         <div className="barraBusqueda mr-4">
