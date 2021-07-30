@@ -242,7 +242,7 @@ const ListadoCitas = () => {
                                     <tr key={cita._id}>
                                         <td>
                                             <a
-                                                className="btn btn-info espaciado btn-sm"
+                                                className="btn btn-info espaciado padding-button"
                                                 data-toggle="tooltip"
                                                 title="Añadir"
                                                 onClick={() => mostrarModalProducto(cita)}
@@ -258,14 +258,14 @@ const ListadoCitas = () => {
                                         <td>
                                             {cita.Estado === 'Pendiente' ? (
                                                 <a
-                                                    className="btn btn-info espaciado btn-sm"
+                                                    className="btn btn-info espaciado padding-button"
                                                     onClick={() => mostrarModalIncumplimiento(cita)}
                                                 > <ContactSupportIcon /> </a>
 
                                             ) : null}
                                             {cita.Estado === 'Incumplida' ? (
                                                 <a
-                                                    className="btn btn-secondary espaciado btn-sm"
+                                                    className="btn btn-secondary espaciado padding-button"
                                                     onClick={() => mostrarModalLiberacion(cita)}
                                                 > <HighlightOffIcon /> </a>
 
@@ -273,13 +273,13 @@ const ListadoCitas = () => {
 
                                             {cita.Estado === 'Cumplida' ? (
                                                 <a
-                                                    className="btn btn-success espaciado btn-sm"
+                                                    className="btn btn-success espaciado padding-button"
                                                 > <AssignmentTurnedInIcon /> </a>
 
                                             ) : null}
 
                                             <a
-                                                className="btn btn-danger btn-sm"
+                                                className="btn btn-danger padding-button"
                                                 data-toggle="tooltip"
                                                 title="Eliminar"
                                                 onClick={() => mostrarModalEliminar(cita)}
@@ -306,11 +306,13 @@ const ListadoCitas = () => {
                 </ModalBody>
                 <ModalFooter>
                     <Button
+                        className="padding-button"
                         color="primary"
                         onClick={() => eliminarCita(eliminable)}
                     > Eliminar</Button>
 
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => setModalEliminar(false)}
                     > Cancelar </Button>
@@ -328,10 +330,12 @@ const ListadoCitas = () => {
                 </ModalBody>
                 <ModalFooter>
                     <Button
+                        className="padding-button"
                         color="primary"
                         onClick={() => cambiarEstado(cita)}
                     > Confirmar</Button>
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => setModalIncumplimiento(false)}
                     > Cancelar </Button>
@@ -350,11 +354,13 @@ const ListadoCitas = () => {
                 </ModalBody>
                 <ModalFooter>
                     <Button
+                        className="padding-button"
                         color="primary"
                         onClick={() => cambiarEstado(cita)}
                     > Confirmar</Button>
 
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => setModalLiberacion(false)}
                     > Cancelar </Button>
@@ -419,11 +425,13 @@ const ListadoCitas = () => {
                 </ModalBody>
                 <ModalFooter>
                     <Button
+                        className="padding-button"
                         color="primary"
                         onClick={() => actualizarInsumos(gasto)}
                     > Aceptar</Button>
 
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => setModalProducto(false)}
                     > Cancelar </Button>

@@ -538,6 +538,7 @@ img {
   background-color: #dee2e6;
   padding: 0 32px 0 16px;
   float: right;
+  margin-bottom: 10px;
 }
 
 .textField:hover {
@@ -945,13 +946,13 @@ h4 {
 }
 
 /* Galeria y servicios para  */
-.card{
+/* .card{
   height: 300px !important;
   margin-top: 20px !important;
   background: rgb(255, 253, 253) !important;
   border-radius: 7px !important;
   box-shadow: 1px 5px 3px 3px rgba(0, 0, 0, 0.15) !important;
-}
+} */
 
 .contenedor{
   padding: 0px 50px 20px !important;
@@ -965,7 +966,7 @@ h4 {
   height: 170px !important;
 }
 
-.card:hover{
+/* .card:hover{
   box-shadow: 5px 1px 10px 6px rgba(206, 47, 47, 0.4) !important;
   transition: all 0.5s linear;
   border: 1px solid rgb(0, 0, 0) !important;
@@ -977,7 +978,7 @@ h4 {
 .card-text{
   margin-top: 30px !important;
   font-size: 3rem !important;
-}
+} */
 
 .link-servicio{
   margin-top: 10px !important;
@@ -997,23 +998,23 @@ h4 {
   overflow: hidden;
 }
 
-.card-img-top{
+/* .card-img-top{
   transition: all 0.3s ease-in-out;
 }
 
 .card-img-top:hover{
   transform: scale(1,2);
-}
+} */
 
 .text-dark{
   font-weight: bold !important;
 }
 
-.body-Card-text{
+/* .body-Card-text{
   text-align: center !important;
   font-size: 25px !important;
   color: red !important;
-}
+} */
 
 .text-time{
   font-size: 20px !important;
@@ -1023,13 +1024,13 @@ h4 {
   font-size: 15px !important;
 }
 
-.card-title{
+/* .card-title{
   font-weight: bold !important;
   text-decoration-line: underline !important;
   text-decoration-style: double !important;
   font-size: 25px !important;
   margin: 30px;
-}
+} */
 
 .titulo-galeria {
   font-family: TRAJAN PRO !important;
@@ -1052,7 +1053,7 @@ h4 {
   background-color: red; 
 }
 
-.cards-galeria{
+/* .cards-galeria{
   transition: all 0.5s ease !important;
   box-shadow: 1px 5px 3px 3px rgba(0, 0, 0, 0.3) !important;
   border-radius: 10px !important;
@@ -1061,4 +1062,15 @@ h4 {
 
 .cards-galeria:hover{
   transform:scale(0.9);
+} */
+
+.padding-button{
+  padding: 10px;
 }
+
+.pdf-button{
+  height: 25px;
+  background-color: darkseagreen;
+}
+
+

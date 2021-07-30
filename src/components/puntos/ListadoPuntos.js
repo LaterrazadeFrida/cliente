@@ -162,14 +162,14 @@ const ListadoPuntos = () => {
                           <td>
                             {punto.estado === "Activo" ? (
                               <button
-                                className="btn btn-success mr-3"
+                                className="btn btn-success mr-3 padding-button"
                                 onClick={() => cambiarEstado(punto)}
                               >
                                 <AssignmentTurnedInIcon />{" "}
                               </button>
                             ) : (
                               <button
-                                className="btn btn-secondary mr-3"
+                                className="btn btn-secondary mr-3 padding-button"
                                 onClick={() => cambiarEstado(punto)}
                               >
                                 <HighlightOffIcon />{" "}
@@ -177,7 +177,7 @@ const ListadoPuntos = () => {
                             )}
 
                             <button
-                              className="btn btn-danger"
+                              className="btn btn-danger padding-button"
                               onClick={() => eliminarPuntaje(punto)}
                             >
                               <DeleteIcon />

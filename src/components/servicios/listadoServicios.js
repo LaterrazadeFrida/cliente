@@ -112,7 +112,7 @@ const ListadoServicios = () => {
 
                 <h1>Listado de Servicios</h1>
 
-                <div className="barraBusqueda mb-5">
+                <div className="barraBusqueda">
                     <input
                         type="text"
                         placeholder="Buscar"
@@ -146,7 +146,7 @@ const ListadoServicios = () => {
                                         <td>{servicio.tipo}</td>
                                         <td>
                                             <button
-                                                className="btn btn-primary btn-sm"
+                                                className="btn btn-primary padding-button"
                                                 onClick={() => mostrarModalActualizar(servicio)}
                                             > <EditIcon /></button>{"  "}
                                         </td>
@@ -212,29 +212,24 @@ const ListadoServicios = () => {
                             name="tipo"
                             value={tipo}
                             onChange={handleChange}
-
                         />
                     </FormGroup>
-
                 </ModalBody>
-
                 <ModalFooter>
                     <Button
+                        className="padding-button"
                         color="primary"
                         onClick={() => editar(editable)}
-                    >
-                        Editar
-            </Button>
+                    > Editar
+                   </Button>
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => cerrarModalActualizar()}
-                    >
-                        Cancelar
-            </Button>
+                    > Cancelar
+                    </Button>
                 </ModalFooter>
             </Modal>
-
-
         </Fragment>
     );
 }

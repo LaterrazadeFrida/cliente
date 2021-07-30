@@ -1,6 +1,7 @@
 import {
     AGREGAR,
-    ERROR
+    ERROR,
+    LIMPIAR
 } from '../../types';
 
 export default (state, action) => {
@@ -11,11 +12,16 @@ export default (state, action) => {
                 ...state,
                 mensajeConfirmacion:  action.payload
             }
-
         case ERROR:
             return {
                 ...state,
                 mensaje: action.payload
+            }
+        case LIMPIAR:
+            return {
+                ...state,
+                mensaje: null,
+                mensajeConfirmacion: ''
             }
 
         default:

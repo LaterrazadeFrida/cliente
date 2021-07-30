@@ -151,14 +151,20 @@ const ModalProductos = () => {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Pdf targetRef={ref} filename="result.pdf">
+                    <Pdf
+                     className="padding-button pdf-button"
+                     color="primary"
+                     targetRef={ref} 
+                     filename="result.pdf">
                         {({ toPdf }) => <button onClick={toPdf}>Generar PDF</button>}
                     </Pdf>
                     <Button
-                        onClick={() => consultarProductos()}
-                        color="primary"
+                      className="padding-button"
+                      onClick={() => consultarProductos()}
+                      color="primary"
                     > Consultar</Button>
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => cerrarModal()}
                     > Cancelar </Button>

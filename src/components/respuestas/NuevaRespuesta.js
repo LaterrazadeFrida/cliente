@@ -77,8 +77,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 const NuevaRespuesta = () => {
-
-
     const classes = useStyles();
 
     //obtener el state y todas sus funciones
@@ -86,48 +84,33 @@ const NuevaRespuesta = () => {
 
     const respuestaContext = useContext(RespuestaContext);
 
-
     //extraer objetos del state
     const { usuario } = authContext;
 
-    const { agregarRespuesta, mensaje,mensajeConfirmacion } = respuestaContext;
-
-
-
+    const { agregarRespuesta, mensaje,mensajeConfirmacion,limpiarMensajes } = respuestaContext;
     const [respuesta, guardarRespuesta] = useState({
         idPregunta: '',
         idUsuario: '',
         responde: ''
     });
 
-
     const { idPregunta, responde } = respuesta;
-
-
     const onChange = e => {
         const { name, value } = e.target;
-
-
         guardarRespuesta({
             ...respuesta,
             [name]: value
         })
+        limpiarMensajes();
 
     }
-
-
     //funcion onsubmit
     const onSubmit = e => {
-
         e.preventDefault();
-
         respuesta.idUsuario = usuario._id;
         agregarRespuesta(respuesta);
-
         limpiarForm();
-
     }
-
 
     const limpiarForm = () => {
         guardarRespuesta({
@@ -138,18 +121,14 @@ const NuevaRespuesta = () => {
         });
     }
 
-
     return (
         <Fragment>
             <AppBar position="absolute" color="default" className={classes.appBar}>
                 <Header />
                 <MenuPrincipal />
-
             </AppBar>
-
             <div className="contenedor-principal">
                 <br></br>
-
                 <form
                     onSubmit={onSubmit}
                 >
@@ -161,7 +140,6 @@ const NuevaRespuesta = () => {
                             <div className="campos-obligatorios">
                                 <h3>Los campos marcados con * son obligatorios</h3>
                             </div>
-
                             <h1>Registrar Pregunta</h1>
                             <br></br>
                             <hr></hr>

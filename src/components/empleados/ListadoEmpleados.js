@@ -123,7 +123,7 @@ const ListadoEmpleados = () => {
         <Fragment>
             <div className="contenedor-basico sombra-dark">
                 <h1>Listado de Empleados</h1>
-                <div className="barraBusqueda mb-5">
+                <div className="barraBusqueda">
                     <input
                         type="text"
                         placeholder="Buscar"
@@ -170,7 +170,7 @@ const ListadoEmpleados = () => {
 
                                         <td>
                                             <button
-                                                className="btn btn-primary btn-sm"
+                                                className="btn btn-primary padding-button"
                                                 onClick={() => mostrarModalActualizar(empleado)}
                                             > <EditIcon /></button>{"  "}
                                         </td>
@@ -284,11 +284,13 @@ const ListadoEmpleados = () => {
 
                 <ModalFooter>
                     <Button
+                        className="padding-button"
                         color="primary"
                         onClick={() => editar(editable)}
                     > Editar </Button>
 
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => cerrarModalActualizar()}
                     > Cancelar </Button>

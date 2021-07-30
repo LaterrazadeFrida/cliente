@@ -5,26 +5,19 @@ import respuestaContext from './respuestaContext';
 
 import {
     AGREGAR,
-    ERROR
+    ERROR,
+    LIMPIAR
 } from '../../types';
 
-
-
-
 const RespuestaState = props => {
-
     const initialState = {
-
         respuestas: [],
         mensaje: null,
         mensajeConfirmacion: ''
-
     }
 
     // Dispatch para ejecutar las acciones del reducer
     const [state, dispatch] = useReducer(respuestaReducer, initialState);
-
-
     const agregarRespuesta = async respuesta => {
         try {
             const resultado = await clienteAxios.post('/api/respuestas', respuesta);
@@ -47,14 +40,20 @@ const RespuestaState = props => {
         }
     }
 
+    const limpiarMensajes = ()=> {
+        dispatch({
+            type: LIMPIAR
+        })
+    }
+
     return (
         <respuestaContext.Provider
             value={{
                 respuestas: state.respuestas,
                 mensaje: state.mensaje,
                 mensajeConfirmacion: state.mensajeConfirmacion,
-                agregarRespuesta
-
+                agregarRespuesta,
+                limpiarMensajes
             }}
         >
             {props.children}

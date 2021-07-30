@@ -207,10 +207,12 @@ const Ganancias = () => {
                         {({ toPdf }) => <button onClick={toPdf}>Generar PDF</button>}
                     </Pdf>
                     <Button
+                       className="padding-button"
                         onClick={() => consultarGanancias()}
                         color="primary"
                     > Consultar</Button>
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => cerrarModal()}
                     > Cancelar </Button>

@@ -6,8 +6,6 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import Card from "react-bootstrap/Card";
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-
-
 import {
 
     Button,
@@ -16,53 +14,32 @@ import {
 
 const useStyles = makeStyles((theme) =>
     createStyles({
-
         gridList: {
             width: 420,
-            height: 450,
-            
-        },
-
-
+            height: 450,  
+        }
     }),
 );
 
 const ListadoServiciosCita = () => {
     const classes = useStyles();
-
-
     const servicioContext = useContext(ServicioContext);
-    /** */
     const { servicios, obtenerServicios, mensaje } = servicioContext;
-
     const agendamientoContext = useContext(AgendamientoContext);
-
     const { guardarServicio, calcularCostoTotal, costoTotal ,guardarSeleccion} = agendamientoContext;
-
-
     // Obtener servicios cuando carga el componente
     useEffect(() => {
         // si hay un error
-
         obtenerServicios();
         // eslint-disable-next-line
     }, [mensaje]);
 
-
-
     const guardarEnResumen = servicio => {
-
         let total = costoTotal + servicio.precio;
-
         calcularCostoTotal(total);
         guardarSeleccion(servicio);
-
         guardarServicio(servicio);
-
-
     }
-
-
     // revisar si proyectos tiene contenido
     if (servicios.length === 0) {
         return <p>No hay servicios, comienza creando uno</p>
@@ -70,11 +47,9 @@ const ListadoServiciosCita = () => {
 
     return (
         <Fragment>
-
             <br></br>
             <GridList cellHeight={180} className={classes.gridList}>
                 {servicios.map((servicio) => (
-
                     <Card key={servicio._id}>
                         <Card.Body>
                             <Card.Title>{servicio.nombre}
@@ -87,7 +62,10 @@ const ListadoServiciosCita = () => {
                             </Card.Title>
                         </Card.Body>
                         <Card.Footer>
-                            <Button variant="primary" size="lg" block
+                            <Button 
+                             className="padding-button"
+                             variant="primary"
+                             size="lg" block
                                 onClick={() => guardarEnResumen(servicio)}
                             > Agendar </Button>
                         </Card.Footer>

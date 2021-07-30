@@ -6,8 +6,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import Pdf from "react-to-pdf";
 import Alert from '@material-ui/lab/Alert';
-
-
 import {
     Table,
     Button,
@@ -204,10 +202,12 @@ const Edades = () => {
                         {({ toPdf }) => <button onClick={toPdf}>Generar PDF</button>}
                     </Pdf>
                     <Button
+                        className="padding-button"
                         onClick={() => consultarEdades()}
                         color="primary"
                     > Consultar</Button>
                     <Button
+                        className="padding-button"
                         color="danger"
                         onClick={() => cerrarModal()}
                     > Cancelar </Button>
