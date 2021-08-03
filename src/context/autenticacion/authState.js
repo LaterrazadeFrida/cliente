@@ -13,6 +13,7 @@ import {
     VALIDAR_FORMULARIO,
     CERRAR_SESION_LOG,
     LIMPIAR_STATE,
+    LIMPIAR
 } from '../../types';
 
 const AuthState = props => {
@@ -24,7 +25,8 @@ const AuthState = props => {
         mensaje: null,
         cargando: true,
         textoAlert: '',
-        mensajeConfirmación: ''
+        mensajeConfirmación: '',
+        mensajeError: null
     }
 
     const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -32,11 +34,9 @@ const AuthState = props => {
     // Retorna el usuario autenticado
     const usuarioAutenticado = async () => {
         const token = localStorage.getItem('token');
-
         if (token) {
             tokenAuth(token);
         }
-
         try {
             const respuesta = await clienteAxios.get('/api/auth');
             dispatch({
@@ -56,7 +56,6 @@ const AuthState = props => {
     const iniciarSesion = async datos => {
         try {
             const respuesta = await clienteAxios.post('/api/auth', datos);
-
             dispatch({
                 type: LOGIN_EXITOSO,
                 payload: respuesta.data
@@ -86,16 +85,20 @@ const AuthState = props => {
 
     // Cierra la sesión del usuario
     const cerrarSesion = () => {
-
         dispatch({
             type: CERRAR_SESION
         })
     }
 
     const limpiarAlert = () => {
-
         dispatch({
             type: LIMPIAR_STATE,
+        })
+    }
+
+    const limpiarUsuario = ()=> {
+        dispatch({
+            type: LIMPIAR
         })
     }
 
@@ -110,11 +113,13 @@ const AuthState = props => {
                 errorformulario: state.errorformulario,
                 textoAlert: state.textoAlert,
                 mensajeConfirmación: state.mensajeConfirmación,
+                mensajeError: state.mensajeError,
                 iniciarSesion,
                 usuarioAutenticado,
                 cerrarSesion,
                 mostrarError,
-                limpiarAlert
+                limpiarAlert,
+                limpiarUsuario
             }}
         >{props.children}
 

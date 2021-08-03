@@ -70,7 +70,7 @@ const Login = (props) => {
     // extraer los valores del context
 
     const authContext = useContext(AuthContext);
-    const { mensaje, autenticado, iniciarSesion, mostrarError, limpiarAlert } = authContext;
+    const { mensaje, autenticado, iniciarSesion, mostrarError, mensajeError,limpiarUsuario,limpiarAlert } = authContext;
 
     // En caso de que el password o usuario no exista
     useEffect(() => {
@@ -79,6 +79,10 @@ const Login = (props) => {
             props.history.push('/inicio');
 
         }
+        else {
+            limpiarUsuario();
+        }
+
         // eslint-disable-next-line
     }, [mensaje, autenticado, props.history]);
 
@@ -99,7 +103,6 @@ const Login = (props) => {
             ...usuario,
             [name]: value
         })
-
         limpiarAlert();
 
     }
@@ -126,7 +129,7 @@ const Login = (props) => {
         <Fragment>
             <Header />
             <Barra />
-            {mensaje ? (<Alert severity="error">{mensaje.msg}</Alert>) : null}
+            {mensajeError ? (<Alert severity="error">{mensajeError.msg}</Alert>) : null}
             <div className="contenedor-form sombra-dark">
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />

@@ -5,7 +5,7 @@ import {
     CERRAR_SESION,
     VALIDAR_FORMULARIO,
     LIMPIAR_STATE,
-    CERRAR_SESION_LOG
+    LIMPIAR
 } from '../../types';
 
 export default (state, action) => {
@@ -39,7 +39,7 @@ export default (state, action) => {
                 token: null,
                 usuario: null,
                 autenticado: false,
-                mensaje: action.payload,
+                mensajeError: action.payload,
                 cargando: false,
             }
         case LIMPIAR_STATE:
@@ -50,12 +50,13 @@ export default (state, action) => {
                 mensajeConfirmación: '',
                 mensaje: null
             }
-        case CERRAR_SESION_LOG:
-            return {
-                usuario: null,
-                autenticado: false,
-                cargando: false,
-            }
+       case LIMPIAR:
+                return {
+                    token: null,
+                    usuario: null,
+                    autenticado: false,
+                    mensaje: action.payload,
+                    cargando: false                }
         default:
             return state;
     }
