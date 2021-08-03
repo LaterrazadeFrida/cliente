@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState, Fragment } from 'react';
 import ClienteContext from '../../context/clientes/clienteContext';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 import {
     Table,
@@ -18,7 +20,7 @@ const ListadoClientes = () => {
     const clienteContext = useContext(ClienteContext);
 
     //extraer objetos y funciones del state de clientes
-    const { clientes, mensaje, obtenerClientes } = clienteContext;
+    const { clientes, mensaje, obtenerClientes,actualizarCliente } = clienteContext;
 
     const [consulta, guardarConsulta] = useState({
         consult: ''
@@ -49,6 +51,12 @@ const ListadoClientes = () => {
     }
     let fechaForm;
 
+
+    const cambiarEstado = cliente => {
+       
+        actualizarCliente(cliente);
+    }
+
     return (
         <Fragment>
             <div className="contenedor-basico sombra-dark">
@@ -76,6 +84,7 @@ const ListadoClientes = () => {
                                 <th>Correo Electrónico</th>
                                 <th>Teléfono</th>
                                 <th>Fecha de Nacimiento</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -92,7 +101,24 @@ const ListadoClientes = () => {
                                         <td>{cliente.correo}</td>
                                         <td>{cliente.telefono}</td>
                                         <td>{cliente.fecha}</td>
+                                        <td>{cliente.estado}</td>
 
+                                        <td>
+                                            {cliente.estado === 'Activo' ? (
+                                                <button
+                                                    className="btn btn-success padding-button"
+                                                    onClick={() => cambiarEstado(cliente)}
+                                                ><AssignmentTurnedInIcon /></button>
+                                            ) :
+                                                (
+                                                    <button
+                                                        className="btn btn-danger padding-button"
+                                                        onClick={() => cambiarEstado(cliente)}
+                                                    > <HighlightOffIcon /> </button>
+
+                                                )}
+
+                                        </td>
                                     </tr>
                                 )))
                                 :

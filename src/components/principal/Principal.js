@@ -9,14 +9,13 @@ import CarouselContainer from './CarruselContainer';
 
 const Principal = () => {
     const authContext = useContext(AuthContext);
-    const { mensaje, autenticado, cerrarSesion, token } = authContext;
+    const { mensaje, autenticado, cerrarSesion, token ,limpiarUsuario} = authContext;
 
 
     // Forzar eliminación de datos de usuario autenticado
     useEffect(() => {
-
+        limpiarUsuario();
         if (!token) {
-
             cerrarSesion();
         }
         // eslint-disable-next-line

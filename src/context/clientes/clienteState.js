@@ -11,7 +11,8 @@ import {
     LIMPIAR,
     REGISTRO_EXITOSO,
     REGISTRO_ERROR,
-    LIMPIAR_STATE
+    LIMPIAR_STATE,
+    ACTUALIZAR
 } from '../../types';
 
 
@@ -83,18 +84,18 @@ const ClienteState = props => {
     }
 
 
-    // // Edita o modifica un servicio
-    // const actualizarEmpleado = async empleado => {
+    // Edita o modifica un servicio
+    const actualizarCliente = async cliente => {
 
-    //     try {
-    //         const resultado = await clienteAxios.put(`/api/clientes/${empleado._id}`, empleado);
-    //         dispatch({
-    //             type: ACTUALIZAR,
-    //             payload: resultado.data.empleado
-    //         })
-    //     } catch (error) {
-    //     }
-    // }
+        try {
+            const resultado = await clienteAxios.put(`/api/clientes/${cliente._id}`, cliente);
+            dispatch({
+                type: ACTUALIZAR,
+                payload: resultado.data.cliente
+            })
+        } catch (error) {
+        }
+    }
 
 
     const registrarCliente = async datos => {
@@ -134,6 +135,7 @@ const ClienteState = props => {
                 clienteSeleccionado: state.clienteSeleccionado,
                 mensaje: state.mensaje,
                 mensajeConfirmación: state.mensajeConfirmación,
+                actualizarCliente,
                 mostrarError,
                 obtenerClientes,
                 guardarClienteSeleccionado,
