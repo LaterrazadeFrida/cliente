@@ -1,10 +1,18 @@
 import React from 'react';
-import { Fragment } from 'react';
+import { Fragment,useContext, useEffect } from 'react';
 import Barra from '../layout/Barra';
 import Header from '../layout/Header';
 import { RViewerTrigger, RViewer } from 'react-viewerjs';
+import AuthContext from '../../context/autenticacion/authContext';
 
 const Galeria = () => {
+    const authContext = useContext(AuthContext);
+    const {limpiarUsuario } = authContext;
+  
+    useEffect(() => {
+          limpiarUsuario();
+      // eslint-disable-next-line
+  }, []);
 
     let imagenes = [
         require("../../images/image2.jpeg"),
@@ -22,23 +30,19 @@ const Galeria = () => {
         <Fragment>
             <Header />
             <Barra />
-            <div className="contenedor-galeria">
-            
+            <div className="contenedor-galeria">       
             <br></br>
-            {/* <h1 className="titulo-galeria">Galeria</h1>
-            <hr className="separador"></hr> */}
             <RViewer imageUrls={imagenes}>
                 <div style={{ marginLeft:'30px', marginRight: '20px', marginTop: '20px' }}>
                     {imagenes.map((imagen, index) => {
                         return (
                             <RViewerTrigger index={index}>
-                                <img className="cards-galeria" src={imagen} alt="Imagen" style={{ width: '315px', height: '315px', margin: '1%', border: '1px solid black' }} />
+                                <img className="tarjetas-galeria" src={imagen} alt="Imagen" style={{ width: '315px', height: '315px', margin: '1%', border: '1px solid black' }} />
                             </RViewerTrigger>
                         )
                     })}
                 </div>
-            </RViewer>
-            
+            </RViewer>  
             </div>
         </Fragment>
     );

@@ -998,23 +998,23 @@ h4 {
   overflow: hidden;
 }
 
-/* .card-img-top{
+.tarjetas-img-top{
   transition: all 0.3s ease-in-out;
 }
 
-.card-img-top:hover{
+.tarjetas-img-top:hover{
   transform: scale(1,2);
-} */
+}
 
 .text-dark{
   font-weight: bold !important;
 }
 
-/* .body-Card-text{
+.body-tarjetas-text{
   text-align: center !important;
   font-size: 25px !important;
   color: red !important;
-} */
+}
 
 .text-time{
   font-size: 20px !important;
@@ -1024,13 +1024,13 @@ h4 {
   font-size: 15px !important;
 }
 
-/* .card-title{
+.tarjetas-title{
   font-weight: bold !important;
   text-decoration-line: underline !important;
   text-decoration-style: double !important;
   font-size: 25px !important;
   margin: 30px;
-} */
+}
 
 .titulo-galeria {
   font-family: TRAJAN PRO !important;
@@ -1053,16 +1053,16 @@ h4 {
   background-color: red; 
 }
 
-/* .cards-galeria{
+.tarjetas-galeria{
   transition: all 0.5s ease !important;
   box-shadow: 1px 5px 3px 3px rgba(0, 0, 0, 0.3) !important;
   border-radius: 10px !important;
   cursor: pointer !important;
 }
 
-.cards-galeria:hover{
+.tarjetas-galeria:hover{
   transform:scale(0.9);
-} */
+}
 
 .padding-button{
   padding: 10px;

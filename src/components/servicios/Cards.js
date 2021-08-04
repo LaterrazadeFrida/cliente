@@ -5,13 +5,10 @@ import ServicioContext from '../../context/servicios/servicioContext';
 function Cards(){
 
     const servicioContext = useContext(ServicioContext);
-    
     const { servicios, obtenerServicios } = servicioContext;
-    
     // Obtener proyectos cuando carga el componente
     useEffect(() => {
         // si hay un error
-
         obtenerServicios();
         // eslint-disable-next-line
     }, []);

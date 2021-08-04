@@ -16,22 +16,15 @@ import {
     ModalFooter,
 } from "reactstrap";
 
-
 function buscandoFiltro(consult) {
     return function (x) {
         return x.nombre.toLowerCase().includes(consult) || !consult;
     }
 }
-
-
 const ListadoProductos = () => {
     let fechaForm;
-
     const productoContext = useContext(ProductoContext);
-    /** */
     const { productos, obtenerProductos, actualizarProducto, mensajeConfirmación } = productoContext;
-
-
     const [consulta, guardarConsulta] = useState({
         consult: ''
     });
@@ -103,14 +96,10 @@ const ListadoProductos = () => {
         }
         actualizarProducto(producto);
     }
-
-
     // revisar si productos tiene contenido
     if (productos.length === 0) {
         return <p>No hay productos, comienza creando uno</p>
     }
-
-
     return (
         <Fragment>  
             <div className="contenedor-basico sombra-dark">
@@ -198,10 +187,8 @@ const ListadoProductos = () => {
                                 name="nombre"
                                 value={nombre}
                                 onChange={handleChange}
-
                             />
                         </FormGroup>
-
                         <FormGroup>
                             <label>Unidad de Medida</label>
                             <input
@@ -210,10 +197,8 @@ const ListadoProductos = () => {
                                 name="descripcion"
                                 value={descripcion}
                                 onChange={handleChange}
-
                             />
                         </FormGroup>
-
                         <FormGroup>
                             <label>Precio</label>
                             <input
@@ -225,7 +210,6 @@ const ListadoProductos = () => {
                             />
                         </FormGroup>
                         <FormGroup>
-               
                         </FormGroup>
                         <FormGroup>
                             <label>Unidades</label>
@@ -262,10 +246,7 @@ const ListadoProductos = () => {
                         > Cancelar   </Button>
                     </ModalFooter>
                 </Modal>
-
             </div>
-
-
         </Fragment>
     );
 }

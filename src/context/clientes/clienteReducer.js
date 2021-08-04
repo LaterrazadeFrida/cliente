@@ -5,7 +5,8 @@ import {
     OBTENER,
     REGISTRO_EXITOSO,
     REGISTRO_ERROR,
-    LIMPIAR_STATE
+    LIMPIAR_STATE,
+    ACTUALIZAR
 } from '../../types';
 
 export default (state, action) => {
@@ -52,7 +53,11 @@ export default (state, action) => {
                 errorformulario: false,
                 mensaje: null
             }
-
+        case ACTUALIZAR:
+            return {
+                ...state,
+                clientes: state.clientes.map(cliente => cliente._id === action.payload._id ? action.payload : cliente)
+            }
         default:
             return state;
     }

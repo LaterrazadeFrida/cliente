@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState, Fragment } from 'react';
 import EmpleadoContext from '../../context/empleados/empleadoContext';
 import AlertaContext from '../../context/alertas/alertaContext';
 import EditIcon from '@material-ui/icons/Edit';
-
 import {
     Table,
     Button,
@@ -66,10 +65,7 @@ const ListadoEmpleados = () => {
     }, [mensaje]);
 
     const onChangeBusqueda = e => {
-
         const { name, value } = e.target;
-
-
         guardarConsulta({
             ...consulta,
             [name]: value
@@ -107,9 +103,7 @@ const ListadoEmpleados = () => {
     };
     const editar = empleado => {
         actualizarEmpleado(empleado);
-
         setModalActualizar(false);
-
         alert("Empleado actualizado con éxito");
     }
 
@@ -117,8 +111,6 @@ const ListadoEmpleados = () => {
     if (empleados.length === 0) {
         return <p>No hay empleados, comienza creando uno</p>
     }
-
-
     return (
         <Fragment>
             <div className="contenedor-basico sombra-dark">

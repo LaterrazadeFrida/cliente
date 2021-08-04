@@ -85,16 +85,23 @@ const ClienteState = props => {
 
 
     // Edita o modifica un servicio
-    const actualizarCliente = async cliente => {
-
+    const actualizarCliente = async usuario => {
         try {
-            const resultado = await clienteAxios.put(`/api/clientes/${cliente._id}`, cliente);
+            const resultado = await clienteAxios.put(`/api/usuarios/${usuario._id}`, usuario);
             dispatch({
                 type: ACTUALIZAR,
                 payload: resultado.data.cliente
             })
         } catch (error) {
-        }
+            const alerta = {
+              msg: "Hubo un error",
+              categoria: "alerta-error",
+            };
+            dispatch({
+              type: ERROR,
+              payload: alerta,
+            });
+          }
     }
 
 
