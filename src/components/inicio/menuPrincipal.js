@@ -5,18 +5,12 @@ import AuthContext from '../../context/autenticacion/authContext';
 
 
 const MenuPrincipal = () => {
-
     const authContext = useContext(AuthContext);
     const { usuarioAutenticado, usuario } = authContext;
-
-
     useEffect(() => {
-
         usuarioAutenticado();
         // eslint-disable-next-line
     }, []);
-
-
     return (
         <Fragment>
             <header>

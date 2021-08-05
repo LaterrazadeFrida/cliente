@@ -10,6 +10,7 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import Alert from '@material-ui/lab/Alert';
+import AuthContext from '../../context/autenticacion/authContext';
 
 import {
     Table,
@@ -62,7 +63,6 @@ const ListadoCitas = () => {
     let str;
     let str1;
 
-
     const [modalEliminar, setModalEliminar] = useState(false);
     const [modalIncumplimiento, setModalIncumplimiento] = useState(false);
     const [modalLiberacion, setModalLiberacion] = useState(false);
@@ -95,6 +95,9 @@ const ListadoCitas = () => {
 
     const { obtenerCitas, citas, eliminacionCita, actualizarCita } = citaContext;
     const productoContext = useContext(ProductoContext);
+
+    const authContext = useContext(AuthContext);
+    const { usuario } = authContext;
 
     const { productos, obtenerProductos } = productoContext;
     const { ActualizandoInsumos ,mensajeConfirmación, limpiarMensajes ,mensajeError} = insumoContext;
@@ -190,13 +193,10 @@ const ListadoCitas = () => {
         })
         setModalProducto(false);
     }
-
-
     // revisar si hay empleados registrados
     if (citas.length === 0) {
         return <p >NO HAY CITAS, COMIENZA CREANDO UNA</p>
     }
-
     return (
         <Fragment>
        {mensajeConfirmación ? ( <Alert severity="success">{mensajeConfirmación}</Alert> )  : null}
@@ -220,7 +220,9 @@ const ListadoCitas = () => {
                     <Table className="table table-striped responsive">
                         <thead>
                             <tr>
-                                <th>Añadir Productos</th>
+                            {usuario?.rol !== '60f4ba2518bcb70ffca87c9d'  ?
+                              ( <th>Añadir Productos</th>   )
+                            : null }
                                 <th>Doc. Cliente</th>
                                 <th>Servicio</th>
                                 <th>Doc. Empleado</th>
@@ -228,7 +230,9 @@ const ListadoCitas = () => {
                                 <th>Hora Fin</th>
                                 <th>Costo</th>
                                 <th>Estado</th>
-                                <th>Acciones</th>
+                            {usuario?.rol !== '60f4ba2518bcb70ffca87c9d'  ?
+                              ( <th>Acciones</th> )
+                            : null }
                             </tr>
                         </thead>
                         <tbody>
@@ -236,18 +240,21 @@ const ListadoCitas = () => {
                                 citas.filter(buscandoFiltro(consult)).map(cita => (
                                     str = new Date(cita.horaInicio),
                                     str1 = new Date(cita.horaFin),
-
                                     cita.horaInicio = str.toString(),
                                     cita.horaFin = str1.toString(),
                                     <tr key={cita._id}>
-                                        <td>
-                                            <a
-                                                className="btn btn-info espaciado padding-button"
-                                                data-toggle="tooltip"
-                                                title="Añadir"
-                                                onClick={() => mostrarModalProducto(cita)}
-                                            ><AddBoxIcon /></a>
-                                        </td>
+                                   {usuario?.rol !== '60f4ba2518bcb70ffca87c9d'  ?
+                                      (  
+                                      <td>
+                                        <a
+                                            className="btn btn-info espaciado padding-button"
+                                            data-toggle="tooltip"
+                                            title="Añadir"
+                                            onClick={() => mostrarModalProducto(cita)}
+                                        ><AddBoxIcon /></a>
+                                       </td>
+                                      )
+                                   : null }
                                         <td>{cita.docCliente}</td>
                                         <td>{cita.Servicio}</td>
                                         <td>{cita.docEmpleado}</td>
@@ -255,7 +262,10 @@ const ListadoCitas = () => {
                                         <td>{cita.horaFin}</td>
                                         <td>{cita.costo}</td>
                                         <td>{cita.Estado}</td>
-                                        <td>
+                                        {usuario?.rol !== '60f4ba2518bcb70ffca87c9d'  ?
+                                           ( 
+                                           
+                                            <td>
                                             {cita.Estado === 'Pendiente' ? (
                                                 <a
                                                     className="btn btn-info espaciado padding-button"
@@ -285,6 +295,11 @@ const ListadoCitas = () => {
                                                 onClick={() => mostrarModalEliminar(cita)}
                                             ><HighlightOffIcon /></a>
                                         </td>
+                                           
+                                           )
+                                        : null }
+                                        
+                                      
                                     </tr>
                                 )))
                                 :

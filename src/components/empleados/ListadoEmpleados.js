@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState, Fragment } from 'react';
 import EmpleadoContext from '../../context/empleados/empleadoContext';
 import AlertaContext from '../../context/alertas/alertaContext';
 import EditIcon from '@material-ui/icons/Edit';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import {
     Table,
     Button,
@@ -107,6 +109,15 @@ const ListadoEmpleados = () => {
         alert("Empleado actualizado con éxito");
     }
 
+    const cambiarEstado = empleado => {
+        if (empleado.estado === 'Activo') {
+            empleado.estado = 'Inactivo';
+        } else {
+            empleado.estado = 'Activo'
+        }
+        actualizarEmpleado(empleado);
+    }
+
     // revisar si hay empleados registrados
     if (empleados.length === 0) {
         return <p>No hay empleados, comienza creando uno</p>
@@ -139,17 +150,15 @@ const ListadoEmpleados = () => {
                                 <th>Teléfono</th>
                                 <th>Fecha de Nacimiento</th>
                                 <th>Perfil</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             {empleados ? (
-                                empleados.filter(buscandoFiltro(consult)).map(empleado => (
-                                    
+                                empleados.filter(buscandoFiltro(consult)).map(empleado => (   
                                     fechaForm = new Date(empleado.fecha),
                                     empleado.fecha = fechaForm.toDateString(),
-
-
                                     <tr key={empleado._id}>
                                         <td>{empleado.tipo}</td>
                                         <td>{empleado.documento}</td>
@@ -159,14 +168,26 @@ const ListadoEmpleados = () => {
                                         <td>{empleado.telefono}</td>
                                         <td>{empleado.fecha}</td>
                                         <td>{empleado.perfil}</td>
-
+                                        <td>{empleado.estado}</td>
                                         <td>
                                             <button
                                                 className="btn btn-primary padding-button"
                                                 onClick={() => mostrarModalActualizar(empleado)}
                                             > <EditIcon /></button>{"  "}
-                                        </td>
+                                              {empleado.estado === 'Activo' ? (
+                                                <button
+                                                    className="btn btn-success padding-button"
+                                                    onClick={() => cambiarEstado(empleado)}
+                                                ><AssignmentTurnedInIcon /></button>
+                                            ) :
+                                                (
+                                                    <button
+                                                        className="btn btn-danger padding-button"
+                                                        onClick={() => cambiarEstado(empleado)}
+                                                    > <HighlightOffIcon /> </button>
 
+                                                )}
+                                        </td>
                                     </tr>
                                 )))
                                 :

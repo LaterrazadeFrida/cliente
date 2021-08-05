@@ -159,6 +159,9 @@ const NuevaRespuesta = () => {
                                         >
                                             <MenuItem value={1}>¿Cómo se llama tu abuelo paterno?</MenuItem>
                                             <MenuItem value={2}>¿Cuál fue tu primera escuela primaria?</MenuItem>
+                                            <MenuItem value={3}>¿Cuál es tu cantante favorito?</MenuItem>
+                                            <MenuItem value={4}>¿Cuál es el nombre de tu equipo deportivo favorito?</MenuItem>
+                                            <MenuItem value={5}>¿Cómo se llama tu sobrina mayor?</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </Grid>

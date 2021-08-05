@@ -155,29 +155,15 @@ const ValidarPregunta = (props)  => {
                 <form
                     onSubmit={onSubmit}
                 >
-
                     <main className={classes.layout}>
-
-
-                        {mensaje ?
-
-                            (
-                                <Alert severity="error">{mensaje.msg}</Alert>
-
-                            )
-                            : null}
-
-
+                        {mensaje ? (  <Alert severity="error">{mensaje.msg}</Alert>  ) : null}
                         <Paper className={classes.paper}>
-
                             <div className="campos-obligatorios">
                                 <h3>Los campos marcados con * son obligatorios</h3>
                             </div>
-
                             <h1>Valide su Identidad</h1>
                             <hr></hr>
                             <br></br>
-
                             <Grid container spacing={3}>
                                 <Grid item xs={12}>
                                     <TextField
@@ -205,6 +191,9 @@ const ValidarPregunta = (props)  => {
                                         >
                                             <MenuItem value={1}>¿Cómo se llama tu abuelo paterno?</MenuItem>
                                             <MenuItem value={2}>¿Cuál fue tu primera escuela primaria?</MenuItem>
+                                            <MenuItem value={3}>¿Cuál es tu cantante favorito?</MenuItem>
+                                            <MenuItem value={4}>¿Cuál es el nombre de tu equipo deportivo favorito?</MenuItem>
+                                            <MenuItem value={5}>¿Cómo se llama tu sobrina mayor?</MenuItem>                 
                                         </Select>
                                     </FormControl>
                                 </Grid>
@@ -218,37 +207,26 @@ const ValidarPregunta = (props)  => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChange}
-
                                     />
                                 </Grid>
-
                             </Grid>
                             <div className={classes.buttons}>
-
                                 <Button
                                     className={classes.button}
                                     href="/iniciar-sesion"
                                 > Atrás </Button>
-
                                 <Button
                                     className={classes.button}
                                 > Limpiar  </Button>
-
                                 <Button
                                     type="submit"
                                     variant="contained"
                                     color="primary"
                                     className={classes.button}
                                 >Siguiente</Button>
-
-
                             </div>
-
-
                         </Paper>
-
                     </main>
-
                 </form>
             </div>
         </Fragment>
