@@ -2,6 +2,8 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import ServicioContext from '../../context/servicios/servicioContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EditIcon from '@material-ui/icons/Edit';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 import {
     Table,
@@ -91,27 +93,26 @@ const ListadoServicios = () => {
 
     const editar = servicio => {
         actualizarServicio(servicio);
-
         setModalActualizar(false);
-
         alert("Servicio actualizado con éxito");
-
     }
 
-
-
-
+    const cambiarEstado = servicio => {
+        if (servicio.estado === 'Activo') {
+            servicio.estado = 'Inactivo';
+        } else {
+            servicio.estado = 'Activo'
+        }
+        actualizarServicio(servicio);
+    }
     // revisar si proyectos tiene contenido
     if (servicios.length === 0) {
         return <p>No hay servicios, comienza creando uno</p>
     }
-
     return (
         <Fragment>
             <div className="contenedor-basico sombra-dark">
-
                 <h1>Listado de Servicios</h1>
-
                 <div className="barraBusqueda">
                     <input
                         type="text"
@@ -122,9 +123,7 @@ const ListadoServicios = () => {
                         onChange={onChangeBusqueda}
                     />
                 </div>
-
                 <br></br>
-
                 <Container>
                     <Table className="table table-striped">
                         <thead>
@@ -133,6 +132,7 @@ const ListadoServicios = () => {
                                 <th>Precio</th>
                                 <th>Duración(min)</th>
                                 <th>Tipo</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -144,11 +144,25 @@ const ListadoServicios = () => {
                                         <td>{servicio.precio}</td>
                                         <td>{servicio.duracion}</td>
                                         <td>{servicio.tipo}</td>
+                                        <td>{servicio.estado}</td>
                                         <td>
                                             <button
                                                 className="btn btn-primary padding-button"
                                                 onClick={() => mostrarModalActualizar(servicio)}
                                             > <EditIcon /></button>{"  "}
+                                              {servicio.estado === 'Activo' ? (
+                                                <button
+                                                    className="btn btn-success padding-button"
+                                                    onClick={() => cambiarEstado(servicio)}
+                                                ><AssignmentTurnedInIcon /></button>
+                                            ) :
+                                                (
+                                                    <button
+                                                        className="btn btn-danger padding-button"
+                                                        onClick={() => cambiarEstado(servicio)}
+                                                    > <HighlightOffIcon /> </button>
+
+                                                )}
                                         </td>
                                     </tr>
                                 )))
@@ -172,10 +186,8 @@ const ListadoServicios = () => {
                             name="nombre"
                             value={nombre}
                             onChange={handleChange}
-
                         />
                     </FormGroup>
-
                     <FormGroup>
                         <label>Precio</label>
                         <input
@@ -185,10 +197,8 @@ const ListadoServicios = () => {
                             name="precio"
                             value={precio}
                             onChange={handleChange}
-
                         />
                     </FormGroup>
-
                     <FormGroup>
                         <label>Duración</label>
                         <input
@@ -198,10 +208,8 @@ const ListadoServicios = () => {
                             name="duracion"
                             value={duracion}
                             onChange={handleChange}
-
                         />
                     </FormGroup>
-
                     <FormGroup>
                         <label>Tipo</label>
                         <input
