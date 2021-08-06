@@ -240,8 +240,8 @@ const ListadoCitas = () => {
                                 citas.filter(buscandoFiltro(consult)).map(cita => (
                                     str = new Date(cita.horaInicio),
                                     str1 = new Date(cita.horaFin),
-                                    cita.horaInicio = str.toString(),
-                                    cita.horaFin = str1.toString(),
+                                    cita.horaInicio = str.toUTCString(),
+                                    cita.horaFin = str1.toUTCString(),
                                     <tr key={cita._id}>
                                    {usuario?.rol !== '60f4ba2518bcb70ffca87c9d'  ?
                                       (  

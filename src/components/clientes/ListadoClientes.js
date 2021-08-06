@@ -147,7 +147,7 @@ const ListadoClientes = () => {
                             {clientes ? (
                                 clientes.filter(buscandoFiltro(consult)).map(cliente => (
                                     fechaForm = new Date(cliente.fecha),
-                                    cliente.fecha = fechaForm.toDateString(),
+                                    cliente.fecha = fechaForm.toUTCString(),
                                     <tr key={cliente._id}>
                                         <td>{cliente.tipo}</td>
                                         <td>{cliente.documento}</td>

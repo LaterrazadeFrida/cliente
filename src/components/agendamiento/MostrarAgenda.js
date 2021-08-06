@@ -38,11 +38,11 @@ const MostrarAgenda = () => {
                 <tbody>
                     {citas ? (
                         citas.map((cita) => (
-                            str = new Date(cita.horaInicio),
-                            str1 = new Date(cita.horaFin),
+                            str = new Date(cita.horaInicio) ,
+                            str1 = new Date (cita.horaFin),
 
-                            cita.horaInicio = str.toTimeString(),
-                            cita.horaFin = str1.toTimeString(),
+                            cita.horaInicio = str.toUTCString(),
+                            cita.horaFin = str1.toUTCString(),
 
                             < tr key={cita._id} >
                                 <td>{cita.horaInicio}</td>
