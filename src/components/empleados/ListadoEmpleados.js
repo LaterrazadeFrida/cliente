@@ -158,7 +158,7 @@ const ListadoEmpleados = () => {
                             {empleados ? (
                                 empleados.filter(buscandoFiltro(consult)).map(empleado => (   
                                     fechaForm = new Date(empleado.fecha),
-                                    empleado.fecha = fechaForm.toDateString(),
+                                    empleado.fecha = fechaForm.toUTCString(),
                                     <tr key={empleado._id}>
                                         <td>{empleado.tipo}</td>
                                         <td>{empleado.documento}</td>

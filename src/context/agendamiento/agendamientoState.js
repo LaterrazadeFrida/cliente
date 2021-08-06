@@ -112,7 +112,6 @@ const AgendamientoState = props => {
                 type: REGISTRO_EXITOSO,
                 payload: respuesta.data
             });
-
         } catch (error) {
             const alerta = {
                 msg: error.response?.data.msg,
