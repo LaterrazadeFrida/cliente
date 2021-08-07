@@ -39,7 +39,7 @@ const Citas = () => {
             <div className="contenedor-principal">
                 <main>
                     <br></br>
-                    {usuario?.rol !== '604e9ebe6e69f62dc4e181b6' ? 
+                    {usuario?.rol !== '60f4ba2518bcb70ffca87c9d' ? 
                     ( <ListadoCitas />  ) : <ListadoCitasEmpl />}
 
                 </main>

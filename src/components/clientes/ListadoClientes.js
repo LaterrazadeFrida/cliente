@@ -3,7 +3,6 @@ import ClienteContext from '../../context/clientes/clienteContext';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EditIcon from '@material-ui/icons/Edit';
-
 import {
     Table,
     Button,
@@ -15,13 +14,11 @@ import {
     ModalFooter,
 } from "reactstrap";
 
-
 function buscandoFiltro(consult) {
     return function (x) {
-        return x.nombres.toLowerCase().includes(consult) || !consult;
+        return x.documento.includes(consult) || !consult;
     }
 }
-
 
 const ListadoClientes = () => {
     //instanciar context de empleado
@@ -118,7 +115,7 @@ const ListadoClientes = () => {
                 <h1>Listado de Clientes</h1>
                 <div className="barraBusqueda mb-5">
                     <input
-                        type="text"
+                        type="number"
                         placeholder="Buscar"
                         className="textField"
                         name="consult"

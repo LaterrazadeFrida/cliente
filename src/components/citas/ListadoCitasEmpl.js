@@ -13,6 +13,7 @@ import {
 const CitaEmpleado = () => {
     let str;
     let str1;
+    let citasEmpleado;
 
     const authContext = useContext(AuthContext);
     const { usuarioAutenticado, usuario } = authContext;
@@ -20,7 +21,6 @@ const CitaEmpleado = () => {
     const { obtenerCitas, citas } = citaContext;
 
     useEffect(() => {
-
         usuarioAutenticado();
         obtenerCitas();
         // eslint-disable-next-line
@@ -30,7 +30,6 @@ const CitaEmpleado = () => {
         <Fragment>
         <div className="contenedor-basico sombra-dark">
             <h1>Listado de Citas</h1>
-
             <br></br>
             <Container>
                 <Table className="table table-striped responsive">
@@ -47,14 +46,12 @@ const CitaEmpleado = () => {
                     </thead>
                     <tbody>
                         {citas ? (
-                            citas.filter(cita => cita.docEmpleado === usuario.documento).map(cita => (
+                          citasEmpleado = citas.filter(cita => cita.docEmpleado == usuario.documento),
+                          citasEmpleado.map(cita => (
                                 str = new Date(cita.horaInicio),
                                 str1 = new Date(cita.horaFin),
-
                                 cita.horaInicio = str.toString(),
                                 cita.horaFin = str1.toString(),
-
-
                                 <tr key={cita._id}>
                                     <td>{cita.docCliente}</td>
                                     <td>{cita.Servicio}</td>
@@ -63,7 +60,6 @@ const CitaEmpleado = () => {
                                     <td>{cita.horaFin}</td>
                                     <td>{cita.costo}</td>
                                     <td>{cita.Estado}</td>
-                                  
                                 </tr>
                             )))
                             :

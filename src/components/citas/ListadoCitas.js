@@ -297,9 +297,7 @@ const ListadoCitas = () => {
                                         </td>
                                            
                                            )
-                                        : null }
-                                        
-                                      
+                                        : null } 
                                     </tr>
                                 )))
                                 :
