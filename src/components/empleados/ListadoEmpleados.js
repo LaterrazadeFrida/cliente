@@ -17,7 +17,7 @@ import {
 
 function buscandoFiltro(consult) {
     return function (x) {
-        return x.nombres.toLowerCase().includes(consult) || !consult;
+        return x.documento.includes(consult) || !consult;
     }
 }
 
@@ -128,7 +128,7 @@ const ListadoEmpleados = () => {
                 <h1>Listado de Empleados</h1>
                 <div className="barraBusqueda">
                     <input
-                        type="text"
+                        type="number"
                         placeholder="Buscar"
                         className="textField"
                         name="consult"
