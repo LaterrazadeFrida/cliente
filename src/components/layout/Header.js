@@ -37,7 +37,7 @@ const Header = () => {
             <div className="header-segundario">
                 <ul>
                     <li>
-                        <h2 className="slogan">UN ESPACIO DONDE ESPERAR SE VUELVE UN SUEÑO</h2>
+                        <h2 className="slogan">UN ESPACIO DONDE ESPERAR SE VUELVE UN CUENTO</h2>
                     </li>
                     <div className="derecha">
                         {usuario ?

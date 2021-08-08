@@ -77,9 +77,9 @@ const Contacto = () => {
               {" "}
               <i>
                 Andres David Berrio:&nbsp; aberriog@gmail.com &nbsp; &nbsp;
-                &nbsp; Santiago Zuluaga Castaño:&nbsp;
-                santiagozuluaga46@gmail.com &nbsp; &nbsp; &nbsp; Tatiana Gallon
-                Restrepo:&nbsp; restrepotatianamarcela@gmail.com
+                &nbsp; Tatiana Gallon
+                Restrepo:&nbsp;restrepotatianamarcela@gmail.com
+                &nbsp; &nbsp; &nbsp; Santiago Zuluaga Castaño:&nbsp;  santiagozuluaga46@gmail.com
               </i>
             </p>
             <h1 className="Titulo7">

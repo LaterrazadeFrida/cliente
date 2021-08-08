@@ -19,17 +19,17 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Alert from "@material-ui/lab/Alert";
 import { Button, ModalHeader, ModalFooter } from "reactstrap";
 import MostrarAgenda from "./MostrarAgenda";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
 const useStyles = makeStyles((theme) => ({
-    root: {
-        "& .MuiFormLabel-root": {
-          fontSize: 14,
-          marginTop: -10,
-        },
-      },
+  root: {
+    "& .MuiFormLabel-root": {
+      fontSize: 14,
+      marginTop: -10,
+    },
+  },
   heading: {
     fontSize: theme.typography.pxToRem(18),
     fontWeight: theme.typography.fontWeightRegular,
@@ -100,7 +100,7 @@ const Modales = () => {
   const [modalActualizar, setModalActualizar] = useState(false);
 
   const [state, setState] = React.useState({
-    checkedPoint: false
+    checkedPoint: false,
   });
 
   const handleChange = (event) => {
@@ -115,7 +115,7 @@ const Modales = () => {
     horaFin: new Date(),
     costo: "",
     Estado: "",
-    descuento:""
+    descuento: "",
   });
 
   const { docEmpleado, horaInicio, horaFin, descuento } = cita;
@@ -183,9 +183,10 @@ const Modales = () => {
       mostrarError("NO PUEDE AGENDAR EN FECHAS PASADAS");
       return;
     }
-    if (cita.descuento < 0){
-        mostrarError("EL DESCUENTO DEBE SER MAYOR A 0");
-        return;    }
+    if (cita.descuento < 0) {
+      mostrarError("EL DESCUENTO DEBE SER MAYOR A 0");
+      return;
+    }
 
     let estado = estados.filter(
       (estado) => estado.nombreEstado === "Pendiente"
@@ -195,12 +196,12 @@ const Modales = () => {
     cita.Servicio = servicioSeleccionado.nombre;
     cita.Estado = estado[0].nombreEstado;
 
-    if (cita.descuento !== ""){
-        cita.costo = cita.costo - cita.descuento;
+    if (cita.descuento !== "") {
+      cita.costo = cita.costo - cita.descuento;
     }
 
-    if (state.checkedPoint == true){
-        cita.costo = 0;
+    if (state.checkedPoint == true) {
+      cita.costo = 0;
     }
 
     guardarAgendamiento(cita);
@@ -214,8 +215,10 @@ const Modales = () => {
       docEmpleado: Number,
       horaInicio: new Date(),
       horaFin: new Date(),
-      costo: "",
+      costo: ""
     });
+
+    setState({checkedPoint: false});
   };
   return (
     <Modal style={customStyles} isOpen={abrirModal}>
@@ -256,51 +259,63 @@ const Modales = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {servicioSeleccionado ? (
-                <Card className={classes.card} key={servicioSeleccionado._id}>
-                  <Card.Body>
-                    <Card.Title>
-                      {servicioSeleccionado.nombre}
-                      <hr></hr>
-                      {`$ ${servicioSeleccionado.precio}`}
-                      {"  |  "}
-                      <AccessTimeIcon />
-                      {servicioSeleccionado.duracion}
-                      <br></br>
-                    </Card.Title>
-                    <Grid item xs={12} sm={6}>
-                      <FormControl required className={classes.formControl}>
-                        <Select
-                          required
-                          type="number"
-                          labelId="required-label"
-                          id="select-required"
-                          name="docEmpleado"
-                          value={docEmpleado}
-                          className={classes.selectEmpty}
-                          fullWidth
-                          onChange={onChange}
-                        >
-                          {empleados
-                            ? empleados.map((empleado) => (
-                                <MenuItem
-                                  key={empleado._id}
-                                  value={empleado.documento}
-                                >
-                                  {empleado.nombres}
-                                </MenuItem>
-                              ))
-                            : null}
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                  </Card.Body>
-                  <Card.Footer></Card.Footer>
-                </Card>
-              ) : null}
-\                <Grid item xs={12} sm={4}>
-                  <MostrarAgenda />
-                </Grid>
+              <div className="container">
+                <div className="row">
+                  <div className="col">
+                    {servicioSeleccionado ? (
+                      <Card
+                        className={classes.card}
+                        key={servicioSeleccionado._id}
+                      >
+                        <Card.Body>
+                          <Card.Title>
+                            {servicioSeleccionado.nombre}
+                            <hr></hr>
+                            {`$ ${servicioSeleccionado.precio}`}
+                            {"  |  "}
+                            <AccessTimeIcon />
+                            {servicioSeleccionado.duracion}
+                            <br></br>
+                          </Card.Title>
+                          <Grid item xs={12} sm={6}>
+                            <FormControl
+                              required
+                              className={classes.formControl}
+                            >
+                              <Select
+                                required
+                                type="number"
+                                labelId="required-label"
+                                id="select-required"
+                                name="docEmpleado"
+                                value={docEmpleado}
+                                className={classes.selectEmpty}
+                                fullWidth
+                                onChange={onChange}
+                              >
+                                {empleados
+                                  ? empleados.map((empleado) => (
+                                      <MenuItem
+                                        key={empleado._id}
+                                        value={empleado.documento}
+                                      >
+                                        {empleado.nombres}
+                                      </MenuItem>
+                                    ))
+                                  : null}
+                              </Select>
+                            </FormControl>
+                          </Grid>
+                        </Card.Body>
+                        <Card.Footer></Card.Footer>
+                      </Card>
+                    ) : null}
+                  </div>
+                  <div className="col">
+                    <MostrarAgenda />
+                  </div>
+                </div>
+              </div>
             </AccordionDetails>
           </Accordion>
           <Accordion>
@@ -346,11 +361,13 @@ const Modales = () => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={3}>
+                  <InputLabel className={classes.textFecha} id="required-label">
+                    Descuento
+                  </InputLabel>
                   <TextField
                     type="number"
                     id="disponibles"
                     name="descuento"
-                    label="Descuento"
                     value={descuento}
                     className={classes.root}
                     onChange={onChange}
@@ -358,6 +375,9 @@ const Modales = () => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={3}>
+                  <InputLabel className={classes.textFecha} id="required-label">
+                    Pagar con puntos
+                  </InputLabel>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -368,7 +388,6 @@ const Modales = () => {
                         name="checkedPoint"
                       />
                     }
-                    label="Pagar con puntos"
                   />
                 </Grid>
               </Grid>
