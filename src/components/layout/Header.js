@@ -7,7 +7,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Link } from 'react-router-dom';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { HelpOutline } from '@material-ui/icons';
-
+import Logo from '../../images/logo.png';
 
 const Header = () => {
 
@@ -29,15 +29,12 @@ const Header = () => {
 
     return (
         <Fragment>
-              
-                      
-                     
             <div className="header-segundario">
-         
                 <ul>
-                    <li>
+                <li>
                         <h2 className="slogan">UN ESPACIO DONDE ESPERAR SE VUELVE UN CUENTO</h2>
                     </li>
+                <img className="tamano-header" src={Logo} />
                     <div className="derecha">
                         {usuario ?
                             (<li >

@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment } from "react";
 import Barra from "../layout/Barra";
 import Header from "../layout/Header";
+import Logo from '../../images/logo.png';
 
 const Somos = () => {
   return (
@@ -44,7 +45,8 @@ const Somos = () => {
             </h3>
           </div>
 
-          <div className="Banner"></div>
+          <img className="tamano-logo" src={Logo} />
+          
 
           <div className="Contenedor-mision-vision-objetivo">
             <div className="Mision">
