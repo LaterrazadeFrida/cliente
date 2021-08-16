@@ -1,14 +1,10 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import CitaContext from '../../context/citas/citaContext';
 import AuthContext from '../../context/autenticacion/authContext';
-import { makeStyles } from '@material-ui/core/styles';
-
-
 import {
     Table,
     Container
 } from "reactstrap";
-
 
 const CitaEmpleado = () => {
     let str;

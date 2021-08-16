@@ -2,8 +2,6 @@ import React, { useContext, useEffect, Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../context/autenticacion/authContext';
 
-
-
 const MenuPrincipal = () => {
     const authContext = useContext(AuthContext);
     const { usuarioAutenticado, usuario } = authContext;
@@ -14,14 +12,9 @@ const MenuPrincipal = () => {
     return (
         <Fragment>
             <header>
-
                 <nav className="navegacion">
-
                     <ul className="menu">
-
-
                         <li><a href="/inicio">Inicio</a></li>
-
                         {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
                             <li><a href="/productos">Productos</a>
                                 <ul className="submenu">
@@ -41,10 +34,10 @@ const MenuPrincipal = () => {
                         ) : null}
 
                         {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
-                            <li><a href="/empleados">Empleados</a>
+                            <li><a href="/empleados">Colaboradores</a>
                                 <ul className="submenu">
-                                    <li><a href="/empleados">Lista de Empleados</a></li>
-                                    <li><a href="/nuevo-empleado">Crear Empleado</a></li>
+                                    <li><a href="/empleados">Lista de Colaboradores</a></li>
+                                    <li><a href="/nuevo-empleado">Crear Colaborador</a></li>
                                 </ul>
                             </li>
                         ) : null}
@@ -74,13 +67,7 @@ const MenuPrincipal = () => {
                                 </ul>
                             </li>
                         }
-
-                        {usuario?.rol == '60f4ba1618bcb70ffca87c9c' ? (
-                            <li><a href="/reportes">Reportes</a>
-
-                               
-                            </li>
-                        ) : null}
+                           <li><a href="/reportes">Reportes</a></li>
                     </ul>
                 </nav>
             </header>

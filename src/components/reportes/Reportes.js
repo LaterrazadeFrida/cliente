@@ -7,25 +7,22 @@ import ListadoReportes from './ListadoReportes';
 import Ganancias  from './ModalGanancias';
 import Edades from './ModalEdades';
 import Productos from './ModalProductos';
+import ReporteCitas from './ModalCitasColab';
 const useStyles = makeStyles((theme) => ({
-
     appBar: {
         position: 'relative',
     }
 
 }));
 
-
 const Reportes = () => {
     const classes = useStyles();
-
     return (
         <div className="seccion-principal">
             <AppBar position="absolute" color="default" className={classes.appBar}>
                 <Header />
                 <MenuPrincipal />
             </AppBar>
-
             <div className="contenedor-principal">
                 <main>
                     <br></br>
@@ -33,6 +30,7 @@ const Reportes = () => {
                    <Ganancias/>
                    <Edades/>
                    <Productos/>
+                   <ReporteCitas/>
                 </main>
             </div>
         </div>

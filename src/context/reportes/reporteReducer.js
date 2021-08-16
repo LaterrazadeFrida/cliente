@@ -11,6 +11,9 @@ import {
   ABRIR_MODAL_PRODUCTO,
   CERRAR_MODAL_PRODUCTOS,
   OBTENER,
+  ABRIR_MODAL_CITAS,
+  CERRAR_MODAL_CITAS,
+  LIMPIAR_CITAS
 } from "../../types";
 
 export default (state, action) => {
@@ -30,13 +33,19 @@ export default (state, action) => {
         ...state,
         abrirModalProductos: true,
       };
+    case ABRIR_MODAL_CITAS:
+      return {
+        ...state,
+        abrirModalCitas: true,
+      }
     case CERRAR_MODAL:
       return {
         ...state,
         abrirModalGanancias: action.payload,
         mensajeConfirmación: "",
         citas: [],
-        productos: []
+        productos: [],
+        abrirModalCitas: action.payload
       };
     case CERRAR_MODAL_EDAD:
       return {
@@ -45,7 +54,8 @@ export default (state, action) => {
         mensajeConfirmación: "",
         citas: [],
         segmentacion: [],
-        productos: []
+        productos: [],
+        abrirModalCitas: action.payload,
 
       };
     case AGREGAR:
@@ -102,6 +112,15 @@ export default (state, action) => {
         productos: []
 
       };
+     case LIMPIAR_CITAS:
+     return {
+      segmentacion: [],
+      mensaje: null,
+      mensajeConfirmación: "",
+      citas: [],
+      productos: []
+
+     } 
     case CERRAR_MODAL_PRODUCTOS:
       return {
         ...state,
@@ -109,8 +128,18 @@ export default (state, action) => {
         mensajeConfirmación: "",
         abrirModalGanancias: action.payload,
         abrirModalProductos: action.payload,
+        abrirModalCitas: action.payload,
         productos: []
       };
+     case CERRAR_MODAL_CITAS:
+       return {
+        ...state,
+        abrirModalCitas: action.payload,
+        mensajeConfirmación: "",
+        abrirModalGanancias: action.payload,
+        abrirModalProductos: action.payload,
+        productos: []
+       } 
 
     default:
       return state;

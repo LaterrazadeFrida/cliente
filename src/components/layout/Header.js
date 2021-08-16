@@ -6,16 +6,13 @@ import Tooltip from "react-bootstrap/Tooltip";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Link } from 'react-router-dom';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { HelpOutline } from '@material-ui/icons';
 
 
 const Header = () => {
 
     const authContext = useContext(AuthContext);
-
     const { usuario, usuarioAutenticado, cerrarSesion, token } = authContext;
-
-
-
     const renderTooltip = props => (
         <Tooltip {...props}>Iniciar Sesión</Tooltip>
     );
@@ -30,16 +27,24 @@ const Header = () => {
         // eslint-disable-next-line
     }, []);
 
-
-
     return (
         <Fragment>
+              
+                      
+                     
             <div className="header-segundario">
+         
                 <ul>
                     <li>
                         <h2 className="slogan">UN ESPACIO DONDE ESPERAR SE VUELVE UN CUENTO</h2>
                     </li>
                     <div className="derecha">
+                        {usuario ?
+                            (<li >
+                                <Link className="btn-cerrar" onClick={() => window.open("https://drive.google.com/file/d/1E878yNztQotCOByEUMz7lRhUGfGztocm/view?usp=sharing")}><HelpOutline /></Link>
+                            </li>)
+                            :
+                            null}
                         {usuario ?
                             (<li >
                                 <Link className="btn-cerrar" to="/nueva-pregunta"><SettingsIcon /></Link>
