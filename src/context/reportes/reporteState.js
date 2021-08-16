@@ -14,7 +14,10 @@ import {
     LIMPIAR_EDADES,
     ABRIR_MODAL_PRODUCTO,
     CERRAR_MODAL_PRODUCTOS,
-    OBTENER
+    OBTENER,
+    ABRIR_MODAL_CITAS,
+    CERRAR_MODAL_CITAS,
+    LIMPIAR_CITAS
 } from '../../types';
 
 import clienteAxios from '../../config/axios';
@@ -29,6 +32,7 @@ const ReporteState = props => {
         abrirModalGanancias: false,
         abrirModalEdades: false,
         abrirModalProductos: false,
+        abrirModalCitas: false,
         segmentacion: [],
         productos: []
     }
@@ -110,6 +114,12 @@ const ReporteState = props => {
         })
     }
 
+    const mostrarModalCitas = () => {
+        dispatch({
+            type: ABRIR_MODAL_CITAS
+        }) 
+    }
+
     const cerrarModalGanancias = negativo => {
         dispatch({
             type: CERRAR_MODAL,
@@ -131,6 +141,13 @@ const ReporteState = props => {
         })
     }
 
+    const cerrarModalCitas = negativo => {
+        dispatch({
+            type: CERRAR_MODAL_CITAS,
+            payload: negativo
+        })
+    }
+
     const limpiarReporte = () => {
         dispatch({
             type: LIMPIAR
@@ -140,6 +157,12 @@ const ReporteState = props => {
     const limpiarReporteEdades = () => {
         dispatch({
             type: LIMPIAR_EDADES
+        })
+    }
+
+    const limpiarReporteCitas = () => {
+        dispatch({
+            type: LIMPIAR_CITAS
         })
     }
 
@@ -154,6 +177,7 @@ const ReporteState = props => {
                 segmentacion: state.segmentacion,
                 abrirModalProductos: state.abrirModalProductos,
                 productos: state.productos,
+                abrirModalCitas: state.abrirModalCitas,
                 generarReporte,
                 mostrarModalGanancias,
                 cerrarModalGanancias,
@@ -164,7 +188,10 @@ const ReporteState = props => {
                 limpiarReporteEdades,
                 mostrarModalProducto,
                 cerrarModalProductos,
-                generarReporteProductos
+                generarReporteProductos,
+                mostrarModalCitas,
+                cerrarModalCitas,
+                limpiarReporteCitas
             }}
         >
             {props.children}

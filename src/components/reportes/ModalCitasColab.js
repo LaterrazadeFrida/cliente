@@ -63,13 +63,11 @@ const customStyles = {
 
 const ref = React.createRef();
 
-const Ganancias = () => {
+const ReporteCitas = () => {
   const classes = useStyles();
   let str;
   let str1;
-  let total = 0;
   let citasEmpleado;
-  let citasCumplidas;
   var today = new Date(),
     hoy =
       today.getFullYear() +
@@ -78,27 +76,29 @@ const Ganancias = () => {
       "-" +
       today.getDate();
 
-  const reporteContext = useContext(ReporteContext);
-  const [modalGanancias, setModalGanancias] = useState(false);
-  const {
-    abrirModalGanancias,
-    generarReporte,
-    citas,
-    cerrarModalGanancias,
-    mensaje,
-    limpiarReporte,
-  } = reporteContext;
-  
   const authContext = useContext(AuthContext);
   const { usuario } = authContext;
+
+  const reporteContext = useContext(ReporteContext);
+
+  const [modalCitas, setModalCitas] = useState(false);
+  const {
+    abrirModalCitas,
+    generarReporte,
+    citas,
+    cerrarModalCitas,
+    mensaje,
+    limpiarReporteCitas,
+  } = reporteContext;
+
   // Obtener proyectos cuando carga el componente
   useEffect(() => {
     // si hay un error
-    if (abrirModalGanancias) {
-      setModalGanancias(abrirModalGanancias);
+    if (abrirModalCitas) {
+      setModalCitas(abrirModalCitas);
     }
     // eslint-disable-next-line
-  }, [abrirModalGanancias]);
+  }, [abrirModalCitas]);
 
   const [rango, guardarRango] = useState({
     fechaInicio: new Date(),
@@ -109,31 +109,29 @@ const Ganancias = () => {
 
   const onChange = (evento) => {
     const { name, value } = evento.target;
-
     guardarRango({
       ...rango,
       [name]: value,
     });
 
-    limpiarReporte();
+    limpiarReporteCitas();
   };
 
-  const consultarGanancias = () => {
+  const consultarEdades = () => {
     generarReporte(rango);
   };
 
   const cerrarModal = () => {
-    cerrarModalGanancias(false);
-    setModalGanancias(false);
+    cerrarModalCitas(false);
+    setModalCitas(false);
     guardarRango({
       fechaInicio: "",
       fechaFinal: "",
     });
   };
-
   return (
     <Fragment>
-      <Modal style={customStyles} isOpen={modalGanancias}>
+      <Modal style={customStyles} isOpen={modalCitas}>
         <ModalHeader>
           <h3>Generar Reporte</h3>
         </ModalHeader>
@@ -180,59 +178,36 @@ const Ganancias = () => {
                   <thead>
                     <tr>
                       <th>Servicio</th>
-                      <th>Fecha de la Cita</th>
+                      <th>Colaborador</th>
+                      <th>Hora de Inicio</th>
+                      <th>Hora de Finalización</th>
                       <th>Costo</th>
+                      <th>Estado</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {usuario?.rol == "60f4ba1618bcb70ffca87c9c"? (
-                        citasCumplidas = citas.filter(cita => cita.Estado == 'Cumplida' ),
-                        citasCumplidas.map(
-                            (cita) => (
-                              (str = new Date(cita.horaInicio)),
-                              (str1 = new Date(cita.horaFin)),
-                              (cita.horaInicio = str.toUTCString()),
-                              (cita.horaFin = str1.toUTCString()),
-                              (total = cita.costo + total),
-                              (
-                                <tr key={cita._id}>
-                                  <td>{cita.Servicio}</td>
-                                  <td>{cita.horaInicio}</td>
-                                  <td>{cita.costo}</td>
-                                </tr>
-                              )
-                            )
-                          ) 
-                     ) : (
-                        citasCumplidas = citas.filter(cita => cita.docEmpleado == usuario.documento && cita.Estado == 'Cumplida' ),
-                        citasCumplidas.map(
-                            (cita) => (
-                              (str = new Date(cita.horaInicio)),
-                              (str1 = new Date(cita.horaFin)),
-                              (cita.horaInicio = str.toDateString()),
-                              (cita.horaFin = str1.toDateString()),
-                              (total = cita.costo + total),
-                              (
-                                <tr key={cita._id}>
-                                  <td>{cita.Servicio}</td>
-                                  <td>{cita.horaInicio}</td>
-                                  <td>{cita.costo}</td>
-                                </tr>
-                              )
-                            )
-                          ) 
-                     )}
-                     
+                  {citas ? (
+                     citasEmpleado = citas.filter(cita => cita.docEmpleado == usuario.documento),
+                     citasEmpleado.map(cita => (
+                          str = new Date(cita.horaInicio),
+                          str1 = new Date(cita.horaFin),
+                          cita.horaInicio = str.toUTCString(),
+                          cita.horaFin = str1.toUTCString(),
+                           <tr key={cita._id}>
+                             <td>{cita.Servicio}</td>
+                             <td>{cita.docEmpleado}</td>
+                             <td>{cita.horaInicio}</td>
+                             <td>{cita.horaFin}</td>
+                             <td>{cita.costo}</td>
+                             <td>{cita.Estado}</td>
+                          </tr>
+                            )))
+                            :
+                     null}
                   </tbody>
                 </Table>
               </div>
-            ) : null}
-
-            {total !== 0 ? (
-              <div>
-                <span className="text-reportes">Total Ganancias: {total}</span>
-              </div>
-            ) : null}
+            ):null}
           </div>
         </ModalBody>
         <ModalFooter>
@@ -241,7 +216,7 @@ const Ganancias = () => {
           </Pdf>
           <Button
             className="padding-button"
-            onClick={() => consultarGanancias()}
+            onClick={() => consultarEdades()}
             color="primary"
           >
             {" "}
@@ -261,4 +236,4 @@ const Ganancias = () => {
   );
 };
 
-export default Ganancias;
+export default ReporteCitas;

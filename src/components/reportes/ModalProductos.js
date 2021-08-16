@@ -70,8 +70,6 @@ const ref = React.createRef();
 const ModalProductos = () => {
     let fechaForm;
     const classes = useStyles();
-    let str;
-    let str1;
     let total = 0;
     var today = new Date(), hoy = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 

@@ -125,7 +125,7 @@ const ListadoEmpleados = () => {
     return (
         <Fragment>
             <div className="contenedor-basico sombra-dark">
-                <h1>Listado de Empleados</h1>
+                <h1>Listado de Colaboradores</h1>
                 <div className="barraBusqueda">
                     <input
                         type="number"
@@ -136,7 +136,6 @@ const ListadoEmpleados = () => {
                         onChange={onChangeBusqueda}
                     />
                 </div>
-
                 <br></br>
                 <Container>
                     <Table className="table table-striped">
@@ -192,17 +191,14 @@ const ListadoEmpleados = () => {
                                 )))
                                 :
                                 null}
-
                         </tbody>
                     </Table>
                 </Container>
             </div>
-
             <Modal isOpen={modalActualizar}>
                 <ModalHeader>
                     <div><h3>Editar Empleado</h3></div>
                 </ModalHeader>
-
                 <ModalBody>
                     <FormGroup>
                         <label htmlFor="tipo">Tipo Documento</label>
@@ -216,7 +212,6 @@ const ListadoEmpleados = () => {
                             onChange={handleChange}
                         />
                     </FormGroup>
-
                     <FormGroup>
                         <label htmlFor="documento">N° Documento</label>
                         <input
