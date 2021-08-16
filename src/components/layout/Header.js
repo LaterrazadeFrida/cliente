@@ -7,7 +7,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Link } from 'react-router-dom';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { HelpOutline } from '@material-ui/icons';
-import Logo from '../../images/logo.png';
+import Logo from '../../images/logo2.png';
 
 const Header = () => {
 
