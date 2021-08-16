@@ -178,7 +178,6 @@ const ReporteCitas = () => {
                   <thead>
                     <tr>
                       <th>Servicio</th>
-                      <th>Colaborador</th>
                       <th>Hora de Inicio</th>
                       <th>Hora de Finalización</th>
                       <th>Costo</th>
@@ -195,7 +194,6 @@ const ReporteCitas = () => {
                           cita.horaFin = str1.toUTCString(),
                            <tr key={cita._id}>
                              <td>{cita.Servicio}</td>
-                             <td>{cita.docEmpleado}</td>
                              <td>{cita.horaInicio}</td>
                              <td>{cita.horaFin}</td>
                              <td>{cita.costo}</td>

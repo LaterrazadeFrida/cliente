@@ -489,7 +489,10 @@ aside {
   opacity: 1;
 }
 
-.logo {
+.tamano-logo{
+  width: 500px;
+  height: 500px;
+  display: block;
   margin: auto;
 }
 
@@ -613,7 +616,7 @@ img {
   padding: 0;
   overflow: hidden;
   width: 100%;
-  height: 80px;
+  height: 90px;
   background-color: #1c1c1c;
 }
 
@@ -1073,6 +1076,11 @@ h4 {
 .pdf-button{
   height: 25px;
   background-color: darkseagreen;
+}
+/* logo */
+.tamano-header{
+  width: 170px;
+  height: 90px;
 }
 
 
