@@ -822,6 +822,8 @@ h4 {
 .Titulo6 {
   font-size: 20px;
   color: black;
+  margin-bottom: 0;
+  margin-top: 50px;
 }
 .Titulo8{
   font-size: 28px;

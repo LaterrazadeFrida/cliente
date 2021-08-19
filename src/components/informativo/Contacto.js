@@ -71,7 +71,7 @@ const Contacto = () => {
               <i>Información de los desarrolladores</i>
             </h1>
             <p className="Parrafo4">
-              {" "}
+             
               <i>
                 Andres David Berrio:&nbsp; aberriog@gmail.com &nbsp; &nbsp;
                 &nbsp; Tatiana Gallon
