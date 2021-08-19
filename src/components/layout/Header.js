@@ -31,10 +31,10 @@ const Header = () => {
         <Fragment>
             <div className="header-segundario">
                 <ul>
-                <li>
+                    <li>
                         <h2 className="slogan">UN ESPACIO DONDE ESPERAR SE VUELVE UN CUENTO</h2>
                     </li>
-                <img className="tamano-header" src={Logo} />
+                    <img className="tamano-header" src={Logo} />
                     <div className="derecha">
                         {usuario ?
                             (<li >

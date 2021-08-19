@@ -49,7 +49,7 @@ const Galeria = () => {
                     {imagenes.map((imagen, index) => {
                         return (
                             <RViewerTrigger index={index}>
-                                <img className="tarjetas-galeria" src={imagen} alt="Imagen" style={{ width: '315px', height: '315px', margin: '1%', border: '1px solid black' }} />
+                                <img className="tarjetas-galeria" src={imagen} alt="Imagen" style={{ width: '280px', height: '280px', margin: '1%', border: '1px solid black' }} />
                             </RViewerTrigger>
                         )
                     })}

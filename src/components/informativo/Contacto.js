@@ -26,7 +26,6 @@ const Contacto = () => {
           <div className="Contenedor-todo">
             <div className="contenedor-inf">
               <h1 className="Titulo3">Información local</h1>
-              <br></br>
               <h2 className="Titulo4">Administradora:</h2>
               <h4>Natalia Sierra</h4>
 
@@ -60,12 +59,10 @@ const Contacto = () => {
           </div>
 
           <div className="Texto-Alusivo">
-            <h2 className="">
               <p className="Parrafo3">
                 {" "}
                 <b>"Un sitio donde esperar se vuelve un cuento"</b>
               </p>
-            </h2>
           </div>
 
           <div className="Footer">
