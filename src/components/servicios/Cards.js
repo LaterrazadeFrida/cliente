@@ -14,7 +14,7 @@ function Cards(){
     }, []);
 
     return(
-        <div className=" contenedor d-flex">
+        <div className="contenedor d-flex">
             <div className="row">
                 {
                     servicios.map(servicio=>(

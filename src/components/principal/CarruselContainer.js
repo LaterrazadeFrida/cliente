@@ -4,6 +4,7 @@ import image1 from '../../images/servicio1.png';
 import image2 from '../../images/servicio2.png';
 import image3 from '../../images/servicio3.png';
 import image4 from '../../images/servicio4.png';
+import { Link } from 'react-router-dom';
 
 const CarouselContainer = () =>{
     return (
@@ -16,9 +17,8 @@ const CarouselContainer = () =>{
              />
              
             <Carousel.Caption>
-              <h3></h3>
-              <p className="Parrafo">Aquí encontrarás información respecto al servicio de Manicure.</p>
-              <a className="btn" href="servicios">Más Información</a>
+              <p>Aquí encontrarás información respecto al servicio de Manicure.</p>
+              <Link className="btns" href="/servicio-cliente">Ver más Información</Link>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={5000}>
@@ -28,9 +28,8 @@ const CarouselContainer = () =>{
               alt="Pedicure Terraza de Frida"
             />
             <Carousel.Caption>
-              <h3></h3>
-              <p className="Parrafo">Aquí encontraras información respecto al servicio de Pedicure.</p>
-              <a className="btn" href="servicios">Más Información</a>
+              <p>Aquí encontraras información respecto a nuestra ubicación.</p>
+              <a className="btns" href="/contacto">Ver más Información</a>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={5000}>
@@ -40,9 +39,8 @@ const CarouselContainer = () =>{
               alt="Tinturas Terraza de Frida"
             />
             <Carousel.Caption>
-              <h3></h3>
-              <p className="Parrafo">Aquí encontraras información respecto al servicio de Tinturas.</p>
-              <a className="btn" href="servicios">Más Información</a>
+              <p>Aquí encontraras información respecto al servicio de Tinturas.</p>
+              <a className="btns" href="/servicio-cliente">Ver más Información</a>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={5000}>
@@ -52,9 +50,8 @@ const CarouselContainer = () =>{
               alt="Cejas Terraza de Frida"
             />
             <Carousel.Caption>
-              <h3></h3>
-              <p className="Parrafo">Aquí encontraras información respecto al servicio de Cejas.</p>
-              <a className="btn" href="servicios">Más Información</a>
+              <p>Aquí encontraras información respecto al servicio de Cejas.</p>
+              <a className="btns" href="/servicio-cliente">Ver más Información</a>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
