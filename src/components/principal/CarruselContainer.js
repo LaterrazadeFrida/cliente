@@ -17,7 +17,7 @@ const CarouselContainer = () =>{
              />
              
             <Carousel.Caption>
-              <p>Aquí encontrarás información respecto al servicio de Manicure.</p>
+              <p>Aquí encontrarás información respecto al servicio de manicure.</p>
               <Link className="btns" href="/servicio-cliente">Ver más Información</Link>
             </Carousel.Caption>
           </Carousel.Item>
@@ -39,7 +39,7 @@ const CarouselContainer = () =>{
               alt="Tinturas Terraza de Frida"
             />
             <Carousel.Caption>
-              <p>Aquí encontraras información respecto al servicio de Tinturas.</p>
+              <p>Aquí encontraras información respecto al servicio de manicure.</p>
               <a className="btns" href="/servicio-cliente">Ver más Información</a>
             </Carousel.Caption>
           </Carousel.Item>
@@ -50,7 +50,7 @@ const CarouselContainer = () =>{
               alt="Cejas Terraza de Frida"
             />
             <Carousel.Caption>
-              <p>Aquí encontraras información respecto al servicio de Cejas.</p>
+              <p>Aquí encontraras información respecto al servicio de Tintura.</p>
               <a className="btns" href="/servicio-cliente">Ver más Información</a>
             </Carousel.Caption>
           </Carousel.Item>
