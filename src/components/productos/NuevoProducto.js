@@ -77,12 +77,8 @@ const useStyles = makeStyles((theme) => ({
 
 const NuevoProducto = () => {
   const classes = useStyles();
-
   const productoContext = useContext(ProductoContext);
-
-  const { errorformulario, agregarProducto, mostrarError, textoAlert } =
-    productoContext;
-
+  const { errorformulario, agregarProducto, mostrarError, textoAlert ,limpiarError} = productoContext;
   const [producto, guardarProducto] = useState({
     nombre: "",
     descripcion: "",
@@ -93,14 +89,13 @@ const NuevoProducto = () => {
   });
 
   const { nombre, descripcion, precio, fechaCompra, disponibles, estado } = producto;
-
   // Lee los contenidos del input
   const onChangeProducto = (evento) => {
+    limpiarError();
     //destructure de los valores enviados por el metodo onchange de cada input
     const { name, value } = evento.target;
-
     //expresion regular que no permite que en campos de texto se escriban numeros
-    if (name !== "disponibles" && name !== "precio" && name !== "descripcion" && name !== "fechaCompra") {
+    if (name !== "disponibles" && name !== "descripcion" && name !== "fechaCompra" && name !== "precio" ) {
       let regex = new RegExp("^[ñíóáéú a-zA-Z ]+$");
       for (let i = 0; i <= value.length - 1; i++) {
         let letra = value[i];
@@ -109,7 +104,6 @@ const NuevoProducto = () => {
         }
       }
     }
-
     guardarProducto({
       ...producto,
       [name]: value,
@@ -118,7 +112,6 @@ const NuevoProducto = () => {
 
   const onSubmitProducto = (e) => {
     e.preventDefault();
-
     // Validar  de campos
     if (
       nombre === "" ||
@@ -129,13 +122,11 @@ const NuevoProducto = () => {
       return;
     }
 
-    if (precio <= 0 || precio > 500000) {
+    if (precio <= 0 || precio >= 200000) {
       mostrarError("El valor debe ser mayor a 0 y menor a 200.000$");
       return;
     }
-
     agregarProducto(producto);
-
     limpiarForm();
     alert("Agregado con exito");
   };
@@ -157,10 +148,8 @@ const NuevoProducto = () => {
         <Header />
         <MenuPrincipal />
       </AppBar>
-
       <div className="contenedor-principal">
         <br></br>
-
         <form onSubmit={onSubmitProducto}>
           <main className={classes.layout}>
             {errorformulario ? (
@@ -175,7 +164,6 @@ const NuevoProducto = () => {
               <h1>Nuevo Producto</h1>
               <hr></hr>
               <br></br>
-
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <TextField

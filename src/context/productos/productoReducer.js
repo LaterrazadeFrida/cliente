@@ -56,11 +56,13 @@ export default (state, action) => {
                 ...state,
                 productos: state.productos.map(producto => producto._id === action.payload._id ? action.payload : producto)
             }
-
         case LIMPIAR:
             return {
                 ...state,
-                productoSeleccionado: null
+                productoSeleccionado: null,
+                mensaje: null,
+                errorformulario: false,
+                textoAlert: ""
             }
         default:
             return state;

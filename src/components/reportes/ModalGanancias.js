@@ -68,7 +68,8 @@ const Ganancias = () => {
   let str;
   let str1;
   let total = 0;
-  let citasEmpleado;
+  let gananciasTotales = 0;
+  let ganancias = 0;
   let citasCumplidas;
   var today = new Date(),
     hoy =
@@ -181,7 +182,7 @@ const Ganancias = () => {
                     <tr>
                       <th>Servicio</th>
                       <th>Fecha de la Cita</th>
-                      <th>Costo</th>
+                      <th>Ganancia</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -194,11 +195,12 @@ const Ganancias = () => {
                               (cita.horaInicio = str.toUTCString()),
                               (cita.horaFin = str1.toUTCString()),
                               (total = cita.costo + total),
+                              (ganancias = cita.costo / 2),
                               (
                                 <tr key={cita._id}>
                                   <td>{cita.Servicio}</td>
                                   <td>{cita.horaInicio}</td>
-                                  <td>{cita.costo}</td>
+                                  <td>{ganancias}</td>
                                 </tr>
                               )
                             )
@@ -211,26 +213,26 @@ const Ganancias = () => {
                               (str1 = new Date(cita.horaFin)),
                               (cita.horaInicio = str.toDateString()),
                               (cita.horaFin = str1.toDateString()),
-                              (total = cita.costo + total),
+                              (total =+ cita.costo),
+                              (ganancias = cita.costo / 2),
                               (
                                 <tr key={cita._id}>
                                   <td>{cita.Servicio}</td>
                                   <td>{cita.horaInicio}</td>
-                                  <td>{cita.costo}</td>
+                                  <td>{ganancias}</td>
                                 </tr>
                               )
                             )
                           ) 
                      )}
-                     
                   </tbody>
                 </Table>
               </div>
             ) : null}
-
             {total !== 0 ? (
+              gananciasTotales = total/2,
               <div>
-                <span className="text-reportes">Total Ganancias: {total}</span>
+                <span className="text-reportes">Total Ganancias: {gananciasTotales}</span>
               </div>
             ) : null}
           </div>

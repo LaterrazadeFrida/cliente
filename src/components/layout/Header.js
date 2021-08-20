@@ -26,7 +26,6 @@ const Header = () => {
         usuarioAutenticado();
         // eslint-disable-next-line
     }, []);
-
     return (
         <Fragment>
             <div className="header-segundario">

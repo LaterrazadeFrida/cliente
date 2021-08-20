@@ -29,40 +29,9 @@ function buscandoFiltro(consult) {
     }
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiFormLabel-root':
-        {
-            fontSize: 14,
-            marginTop: -10
-
-        }
-    },
-    heading: {
-        fontSize: theme.typography.pxToRem(18),
-        fontWeight: theme.typography.fontWeightRegular,
-    },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-        width: 265
-
-    },
-    formControl: {
-        minWidth: 265,
-
-    },
-    text: {
-        fontSize: 14,
-        marginTop: -10
-    }
-
-}));
-
 const ListadoCitas = () => {
-    const classes = useStyles();
     let str;
     let str1;
-
     const [modalEliminar, setModalEliminar] = useState(false);
     const [modalIncumplimiento, setModalIncumplimiento] = useState(false);
     const [modalLiberacion, setModalLiberacion] = useState(false);
@@ -73,9 +42,7 @@ const ListadoCitas = () => {
         medida: '',
         cantidad: ''
     });
-
     const {idProducto, idCita, medida, cantidad} = gasto;
-
     const [eliminable, guardarEliminable] = useState('');
     const [cita, guardarCita] = useState({
         _id: '',
@@ -87,7 +54,6 @@ const ListadoCitas = () => {
         costo: '',
         Estado: ''
     });
-
 
     const citaContext = useContext(CitaContext);
     const insumoContext = useContext(InsumoContext);
@@ -264,7 +230,6 @@ const ListadoCitas = () => {
                                         <td>{cita.Estado}</td>
                                         {usuario?.rol !== '60f4ba2518bcb70ffca87c9d'  ?
                                            ( 
-                                           
                                             <td>
                                             {cita.Estado === 'Pendiente' ? (
                                                 <a
@@ -287,7 +252,6 @@ const ListadoCitas = () => {
                                                 > <AssignmentTurnedInIcon /> </a>
 
                                             ) : null}
-
                                             <a
                                                 className="btn btn-danger padding-button"
                                                 data-toggle="tooltip"
@@ -295,7 +259,6 @@ const ListadoCitas = () => {
                                                 onClick={() => mostrarModalEliminar(cita)}
                                             ><HighlightOffIcon /></a>
                                         </td>
-                                           
                                            )
                                         : null } 
                                     </tr>
@@ -395,7 +358,7 @@ const ListadoCitas = () => {
                         >
                             <option>--Seleccione--</option>
                             {productos ? (
-                                productos.map(producto => (
+                                productos.filter(producto => producto.disponibles !== 0 && producto.estado == 'Activo' ).map(producto => (
                                     <option
                                         key={producto._id}
                                         value={producto._id}
@@ -415,7 +378,6 @@ const ListadoCitas = () => {
                             name="medida"
                             value={medida}
                             onChange={onChangeInventario} 
-
                         >
                             <option >--Selecccione--</option>
                             <option value='GR'>GR</option>
@@ -431,10 +393,8 @@ const ListadoCitas = () => {
                             value={cantidad}
                             type="number"
                             onChange={onChangeInventario} 
-
                         />
                     </FormGroup>
-
                 </ModalBody>
                 <ModalFooter>
                     <Button

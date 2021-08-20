@@ -145,6 +145,11 @@ const ProductoState = (props) => {
     });
   };
 
+  const limpiarError = ()=> {
+    dispatch({
+        type: LIMPIAR
+    })
+  }
   return (
     <productoContext.Provider
       value={{
@@ -163,6 +168,7 @@ const ProductoState = (props) => {
         guardarProductoSeccionado,
         limpiarProducto,
         mostrarFormulario,
+        limpiarError
       }}
     >
       {props.children}

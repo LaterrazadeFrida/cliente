@@ -120,15 +120,11 @@ const NuevoEmpleado = () => {
     const { tipo, documento, nombres, apellidos, correo, telefono, fecha,
         perfil, contraseña, confirmarcontraseña, confirmarCorreo } = empleado;
 
-
     //funcion que lee los inputs
     const onChange = e => {
         const { name, value } = e.target;//destructure de los valores enviados por el metodo onchange de cada input
-
         if (name !== "telefono" && name !== "fecha" && name !== "documento" && name !== "correo" && name !== "confirmarCorreo"
-            && name !== "confirmarcontraseña" && name !== "contraseña" && name !== "perfil"
-
-        ) {
+            && name !== "confirmarcontraseña" && name !== "contraseña" && name !== "perfil") {
             let regex = new RegExp("^[ñíóáéú a-zA-Z ]+$");
             for (let i = 0; i <= value.length - 1; i++) {
                 let letra = value[i]
@@ -247,7 +243,7 @@ const NuevoEmpleado = () => {
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         required
-                                        type="number"
+                                        type="text"
                                         id="documento"
                                         name="documento"
                                         label="N° Documento"
@@ -255,7 +251,6 @@ const NuevoEmpleado = () => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChange}
-
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -268,7 +263,6 @@ const NuevoEmpleado = () => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChange}
-
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -321,11 +315,9 @@ const NuevoEmpleado = () => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChange}
-
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-
                                     <InputLabel className={classes.textFecha} id="required-label">Fecha de nacimiento</InputLabel>
                                     <TextField
                                         required
@@ -341,7 +333,6 @@ const NuevoEmpleado = () => {
                                         }}
                                     />
                                 </Grid>
-
                                 <Grid item xs={12} sm={6}>
                                     <FormControl required className={classes.formControl}>
                                         <InputLabel className={classes.text} id="required-label">Tipo</InputLabel>
@@ -367,12 +358,9 @@ const NuevoEmpleado = () => {
                                                 )))
                                                 :
                                                 null}
-
                                         </Select>
-
                                     </FormControl>
                                 </Grid>
-
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         required
@@ -384,7 +372,6 @@ const NuevoEmpleado = () => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChange}
-
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -398,13 +385,10 @@ const NuevoEmpleado = () => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChange}
-
                                     />
                                 </Grid>
-
                             </Grid>
                             <div className={classes.buttons}>
-
                                 <Button className={classes.button}
                                     onClick={() => limpiarForm()}>
                                     Limpiar  </Button>
