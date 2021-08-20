@@ -175,9 +175,7 @@ const Edades = () => {
                                     <tbody>
                                         {segmentacion ? (
                                             segmentacion.map(s => (
-                                              
                                                 total = s.cantidad + total,
-
                                                 <tr key={s._id}>
                                                     <td>{s.categoria}</td>
                                                     <td>{s.cantidad}</td>
@@ -192,7 +190,7 @@ const Edades = () => {
 
                         {total !== 0 ? (
                             <div>
-                                <span className="text-reportes">Total Clientes: {total}</span>
+                                <span className="text-reportes">Cumplimientos: {total}</span>
                             </div>
                         ) : null}
                     </div>

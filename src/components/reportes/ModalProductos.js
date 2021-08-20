@@ -117,7 +117,8 @@ const ModalProductos = () => {
                                     <thead>
                                         <tr>
                                             <th>Producto</th>
-                                            <th>Cantidad Disponible (GR / U)</th>
+                                            <th>Cantidad Disponible (GR/U)</th>
+                                            <th>Precio</th>
                                             <th>Fecha Compra</th>
                                         </tr>
                                     </thead>
@@ -130,8 +131,8 @@ const ModalProductos = () => {
                                                 <tr key={producto._id}>
                                                     <td>{producto.nombre}</td>
                                                     <td>{producto.disponibles}</td>
+                                                    <td>{producto.precio}</td>
                                                     <td>{producto.fechaCompra}</td>
-
                                                 </tr>
                                             )))
                                             :
