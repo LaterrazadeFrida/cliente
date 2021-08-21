@@ -35,12 +35,19 @@ const Header = () => {
                     </li>
                     <img className="tamano-header" src={Logo} />
                     <div className="derecha">
-                        {usuario ?
-                            (<li >
-                                <Link className="btn-cerrar" onClick={() => window.open("https://drive.google.com/file/d/1E878yNztQotCOByEUMz7lRhUGfGztocm/view?usp=sharing")}><HelpOutline /></Link>
-                            </li>)
-                            :
-                            null}
+                    
+
+                        {usuario?.rol == '60f4ba1618bcb70ffca87c9c'  ? (
+                              <li >
+                                <Link className="btn-cerrar" onClick={() => window.open("https://drive.google.com/file/d/1KSHdEPSoXRhLXEObN5cVQMsZcerlJuGi/view?usp=sharing")}><HelpOutline /></Link>
+                              </li>
+                         )  :null}
+
+                        {usuario?.rol == '60f4ba2518bcb70ffca87c9d'  ?   (  
+                             <li >
+                                <Link className="btn-cerrar" onClick={() => window.open("https://drive.google.com/file/d/1yYsTBWXBYVhgZZHENbAIZBgoLZOKdzlo/view?usp=sharing")}><HelpOutline /></Link>
+                            </li>
+                         ): null  }
                         {usuario ?
                             (<li >
                                 <Link className="btn-cerrar" to="/nueva-pregunta"><SettingsIcon /></Link>

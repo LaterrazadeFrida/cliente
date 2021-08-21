@@ -15,9 +15,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-
-
-
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiFormLabel-root':
@@ -75,14 +72,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NuevoServicio = () => {
-
     const classes = useStyles();
-
     // Obtener el state del formulario
     const servicioContext = useContext(ServicioContext);
-
     const { errorformulario, agregarServicio, mostrarError,
-         limpiarServicio, textoAlert, obtenerTipos, tipos, mensajeConfirmación } = servicioContext;
+         limpiarServicio, textoAlert, obtenerTipos, tipos, mensajeConfirmación,limpiarError } = servicioContext;
 
     // Effect que detecta si hay un servicio seleccionado
     useEffect(() => {
@@ -102,10 +96,9 @@ const NuevoServicio = () => {
     // Extraer nombre de proyecto
     const { nombre, precio, duracion, tipo } = servicio;
 
-
     // Lee los contenidos del input
     const onChangeServicio = evento => {
-
+        limpiarError();
         //destructure de los valores enviados por el metodo onchange de cada input
         const { name, value } = evento.target;
         if (name !== "duracion" && name !== "precio" && name !== "tipo") {
@@ -121,41 +114,30 @@ const NuevoServicio = () => {
             ...servicio,
             [name]: value
         })
-        
-
     }
-
 
     // Cuando el usuario envia un proyecto
     const onSubmitServicio = e => {
         e.preventDefault();
-
         // Validar  de campos 
         if (nombre === '' || precio === null || duracion === null || tipo === '') {
             return;
         }
 
-        if (precio <= 0 || precio > 700000) {
-            mostrarError('El valor debe ser mayor a 0 y menor a 700.000$');
+        if (precio <= 0 || precio > 500000) {
+            mostrarError('El valor debe ser mayor a 0 y menor a 500.000$');
             return;
         }
 
-        if (duracion <= 0) {
-            mostrarError("Ingrese el tiempo en minutos")
+        if (duracion <= 0 || duracion > 360) {
+            mostrarError("Ingrese el tiempo en minutos debe ser masyor a 0 y menor a 6 horas ( 360 min)")
             return;
         }
-
-
         // agregar la el servicio al state de servicios
         agregarServicio(servicio);
-
-
         // Elimina servicio seleccionado del state
         limpiarServicio();
-
-
         // Reiniciar el form
-
         limpiarForm();
     }
 
@@ -166,7 +148,6 @@ const NuevoServicio = () => {
             duracion: '',
             tipo: ''
         })
-
     }
 
     return (
@@ -175,40 +156,24 @@ const NuevoServicio = () => {
                 <Header />
                 <MenuPrincipal />
             </AppBar>
-
             <div className="contenedor-principal">
                 <br></br>
-
                 <form
                     onSubmit={onSubmitServicio}
                 >
-
                     <main className={classes.layout}>
-
                         {errorformulario ?
-                            (
-                                <Alert severity="error">{textoAlert}</Alert>
-
-                            )
+                            ( <Alert severity="error">{textoAlert}</Alert>  )
                             : null}
-
                         {mensajeConfirmación ?
-                            (
-                                <Alert severity="success">{mensajeConfirmación}</Alert>
-
-                            )
-                            : null}
-
+                          (<Alert severity="success">{mensajeConfirmación}</Alert>  ) : null}
                         <Paper className={classes.paper}>
-
                             <div className="campos-obligatorios">
                                 <h3>Los campos marcados con * son obligatorios</h3>
                             </div>
-
                             <h1>Nuevo Servicio</h1>
                             <hr></hr>
                             <br></br>
-
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
@@ -220,7 +185,6 @@ const NuevoServicio = () => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChangeServicio}
-
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -233,7 +197,6 @@ const NuevoServicio = () => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChangeServicio}
-
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -248,12 +211,9 @@ const NuevoServicio = () => {
                                         onChange={onChangeServicio}
                                     />
                                 </Grid>
-
-
                                 <Grid item xs={12} sm={6}>
                                     <FormControl required className={classes.formControl}>
                                         <InputLabel className={classes.text} id="required-label">Tipo</InputLabel>
-
                                         <Select
                                             labelId="required-label"
                                             id="select-required"
@@ -274,19 +234,14 @@ const NuevoServicio = () => {
                                                 )))
                                                 :
                                                 null}
-
                                         </Select>
-
                                     </FormControl>
                                 </Grid>
-
                             </Grid>
                             <div className={classes.buttons}>
-
                                 <Button className={classes.button}
                                     onClick={() => limpiarForm()}>
                                     Limpiar  </Button>
-
                                 <Button
                                     type="submit"
                                     variant="contained"
@@ -294,11 +249,8 @@ const NuevoServicio = () => {
                                     className={classes.button}
                                 >Registrar </Button>
                             </div>
-
                         </Paper>
-
                     </main>
-
                 </form>
             </div>
         </Fragment>
