@@ -146,10 +146,12 @@ const NuevoEmpleado = () => {
 
         e.preventDefault();
 
-        if (contraseña.length < 6) {
-            mostrarError('LA CONTRASEÑA DEBE SER MINIM DE 6 CARACTERES');
+        let regex3 = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+        if (!regex3.test(contraseña) || !contraseña === " ") {
+            mostrarError('LA CONTRASEÑA DEBE SER MÍNIMO DE 6 CARACTERES, DEBE INCLUIR UN NÚMERO, MAYÚSCULAS, MINÚSCULAS Y UN SÍMBOLO');
             return;
         }
+
         // Los 2 passwords son iguales
         if (contraseña !== confirmarcontraseña) {
             mostrarError('LAS CONTRASEÑAS NO SON IGUALES');
@@ -164,16 +166,27 @@ const NuevoEmpleado = () => {
             mostrarError("INGRESE UN DOCUMENTO VALIDO")
             return;
         }
+
         if (telefono <= 0) {
-            mostrarError("INGRESE UN TELÉFONO VALIDO")
+            mostrarError('TELÉFONO NO VÁLIDO');
+            return;
+        }
+
+        // let regex2 = new RegExp("^([1-9]+)");
+        // if (regex2.test(telefono) || !telefono === " ") {
+        //     mostrarError("EL NUMERO DE TELEFONO DEBE SER DE 10 DIGITOS EN FORMATO nnn-nnn-nnnn")
+        //     return;
+        // }
+
+        let regex = new RegExp("^([a-zA-Z1-9]+)");
+        if (!regex.test(documento) || !documento === " ") {
+            mostrarError("EL DOCUMENTO DE IDENTIDAD NO VALIDO, DEBE TENER MÁXIMO 10 CARACTERES Y NO PUEDE INICIAR CON 0 ")
             return;
         }
 
         agregarEmpleado(empleado);
-
         // Elimina empleado seleccionado del state
         limpiarEmpleado();
-
         //reiniciar formulario
         limpiarForm();
 
@@ -200,27 +213,21 @@ const NuevoEmpleado = () => {
                 <Header />
                 <MenuPrincipal />
             </AppBar>
-
             <div className="contenedor-principal">
                 <br></br>
-
                 <form
                     onSubmit={onSubmit}
                 >
-
                     <main className={classes.layout}>
                         {errorformulario ? (<Alert severity="error">{mensaje?.msg}</Alert>) : null}
                         {mensajeConfirmación ? (<Alert severity="success">{mensajeConfirmación}</Alert>) : null}
-
                         <Paper className={classes.paper}>
                             <div className="campos-obligatorios">
                                 <h3>Los campos marcados con * son obligatorios</h3>
                             </div>
-
-                            <h1>Nuevo Empleado</h1>
+                            <h1>Nuevo Colaborador</h1>
                             <hr></hr>
                             <br></br>
-
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={6}>
                                     <FormControl required className={classes.formControl}>
@@ -233,7 +240,6 @@ const NuevoEmpleado = () => {
                                             className={classes.selectEmpty}
                                             fullWidth
                                             onChange={onChange}
-
                                         >
                                             <MenuItem value='CC'>CC</MenuItem>
                                             <MenuItem value='PASAPORTE'>PASAPORTE</MenuItem>
@@ -275,7 +281,6 @@ const NuevoEmpleado = () => {
                                         className={classes.root}
                                         fullWidth
                                         onChange={onChange}
-
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -310,7 +315,7 @@ const NuevoEmpleado = () => {
                                         type="number"
                                         id="telefono"
                                         name="telefono"
-                                        label="Teléfono"
+                                        label="Celular"
                                         value={telefono}
                                         className={classes.root}
                                         fullWidth

@@ -121,6 +121,10 @@ const NuevoProducto = () => {
       estado === ""     ) {
       return;
     }
+    if (disponibles <= 0 || disponibles >= 200) {
+      mostrarError("La cantidad debe ser mayor a 0 y menor a 200");
+      return;
+    }
 
     if (precio <= 0 || precio >= 200000) {
       mostrarError("El valor debe ser mayor a 0 y menor a 200.000$");

@@ -61,7 +61,11 @@ export default (state, action) => {
         case LIMPIAR:
             return {
                 ...state,
-                servicioSeleccionado: null
+                servicioSeleccionado: null,
+                mensajeConfirmación: "",
+                textoAlert: "",
+                mensaje: null,
+                errorformulario: false
             }
             case OBTENER_TIPOS:
                 return {
