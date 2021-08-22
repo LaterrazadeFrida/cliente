@@ -164,7 +164,6 @@ const NuevoCliente = () => {
       mostrarError();
       return;
     }
-
     // Los 2 correos son iguales
     if (documento <= 0) {
       mostrarError("INGRESE UN NÚMERO DE DOCUMENTO VALIDO");
@@ -174,6 +173,39 @@ const NuevoCliente = () => {
     // Los 2 correos son iguales
     if (correo !== confirmarCorreo) {
       mostrarError("LOS CORREOS NO COINCIDEN");
+      return;
+    }
+
+    
+    let regex2 = new RegExp("[0-9]{11}");
+    if (regex2.test(telefono) || !telefono === " ") {
+        mostrarError("EL NÚMERO DE TELÉFONO DEBE SER DE 10 DIGITOS")
+        return;
+    }
+
+    let regex = new RegExp("^([a-zA-Z1-9]+)");
+    if (!regex.test(documento) || !documento === " ") {
+        mostrarError("DOCUMENTO DE IDENTIDAD NO VÁLIDO, DEBE TENER MÁXIMO 10 CARACTERES Y NO PUEDE INICIAR CON 0 ")
+        return;
+    }
+
+    if (Date.parse(fecha) > Date.now()) {
+      mostrarError("FECHA DE NACIMIENTO  NO VÁLIDA");
+      return;
+    }
+    let hoy = new Date();
+    let dateString = fecha;
+    let fechaNacimiento = new Date(dateString);
+    let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    let diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth()
+    if (
+        diferenciaMeses < 0 ||
+        (diferenciaMeses === 0 && hoy.getDate() < fechaNacimiento.getDate())
+    ) {
+        edad--
+    }
+    if (edad < 14) {
+      mostrarError("EL CLIENTE NO PUEDE SER MENOR DE 14 AÑOS ");
       return;
     }
 
@@ -230,11 +262,9 @@ const NuevoCliente = () => {
               <div className="campos-obligatorios">
                 <h3>Los campos marcados con * son obligatorios</h3>
               </div>
-
               <h1>Nuevo Cliente</h1>
               <hr></hr>
               <br></br>
-
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <FormControl required className={classes.formControl}>
