@@ -102,33 +102,27 @@ const NuevaContraseña = () => {
 
 
     const onSubmit = e => {
-
         e.preventDefault();
-
-
         if (contraseña !== confirmaContraseña) {
             mostrarError('Las contraseñas no coinciden');
             return;
         }
 
-        // Password minimo de 6 caracteres
-        if (contraseña.length < 6) {
-            mostrarError('La contraseña debe ser de minimo 6 caracteres');
+        let regex3 = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+        if (!regex3.test(contraseña) || !contraseña === " ") {
+            mostrarError('LA CONTRASEÑA DEBE SER MÍNIMO DE 6 CARACTERES, DEBE INCLUIR UN NÚMERO, MAYÚSCULAS, MINÚSCULAS Y UN SÍMBOLO');
             return;
         }
 
         if (usuarioConfirmado) {
             usuarioConfirmado.contraseña = contraseña;
             agregarContraseña(usuarioConfirmado);
-
         }
         if (!usuarioConfirmado) {
             mostrarError('Ingrese nuevamente la pregunta y respuesta de seguridad');
-
         }
 
         limpiarForm();
-
     }
 
     const limpiarForm = () => {

@@ -163,7 +163,7 @@ const NuevoEmpleado = () => {
             return;
         }
         if (documento <= 0) {
-            mostrarError("INGRESE UN DOCUMENTO VALIDO")
+            mostrarError("INGRESE UN DOCUMENTO VÁLIDO")
             return;
         }
 
@@ -172,22 +172,40 @@ const NuevoEmpleado = () => {
             return;
         }
 
-        // let regex2 = new RegExp("^([1-9]+)");
-        // if (regex2.test(telefono) || !telefono === " ") {
-        //     mostrarError("EL NUMERO DE TELEFONO DEBE SER DE 10 DIGITOS EN FORMATO nnn-nnn-nnnn")
-        //     return;
-        // }
-
-        let regex = new RegExp("^([a-zA-Z1-9]+)");
-        if (!regex.test(documento) || !documento === " ") {
-            mostrarError("EL DOCUMENTO DE IDENTIDAD NO VALIDO, DEBE TENER MÁXIMO 10 CARACTERES Y NO PUEDE INICIAR CON 0 ")
+        let regex2 = new RegExp("[0-9]{11}");
+        if (regex2.test(telefono) || !telefono === " ") {
+            mostrarError("EL NÚMERO DE TELÉFONO DEBE SER DE 10 DIGITOS")
             return;
         }
 
+        let regex = new RegExp("^([a-zA-Z1-9]+)");
+        if (!regex.test(documento) || !documento === " ") {
+            mostrarError("DOCUMENTO DE IDENTIDAD NO VÁLIDO, DEBE TENER MÁXIMO 10 CARACTERES Y NO PUEDE INICIAR CON 0 ")
+            return;
+        }
+
+        if (Date.parse(fecha) > Date.now()) {
+            mostrarError("FECHA DE NACIMIENTO  NO VÁLIDA");
+            return;
+        }
+        let hoy = new Date();
+        let dateString = fecha;
+        let fechaNacimiento = new Date(dateString);
+        let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+        let diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth()
+        if (
+            diferenciaMeses < 0 ||
+            (diferenciaMeses === 0 && hoy.getDate() < fechaNacimiento.getDate())
+        ) {
+            edad--
+        }
+        if (edad < 18) {
+           mostrarError("EL COLABORADOR NO PUEDE SER MENOR DE EDAD");
+           return;
+        }
+      
         agregarEmpleado(empleado);
-        // Elimina empleado seleccionado del state
         limpiarEmpleado();
-        //reiniciar formulario
         limpiarForm();
 
     }
@@ -319,7 +337,7 @@ const NuevoEmpleado = () => {
                                         value={telefono}
                                         className={classes.root}
                                         fullWidth
-                                        onChange={onChange}
+                                        onChange={onChange} 
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
