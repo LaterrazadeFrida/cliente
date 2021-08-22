@@ -224,7 +224,6 @@ const ListadoEmpleados = () => {
                             onChange={handleChange}
                         />
                     </FormGroup>
-
                     <FormGroup>
                         <label htmlFor="nombres">Nombres</label>
                         <input
@@ -237,7 +236,6 @@ const ListadoEmpleados = () => {
                             onChange={handleChange}
                         />
                     </FormGroup>
-
                     <FormGroup>
                         <label htmlFor="apellidos">Apellidos</label>
                         <input

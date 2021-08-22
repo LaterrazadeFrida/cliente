@@ -112,13 +112,14 @@ const NuevoEmpleado = () => {
         telefono: '',
         fecha: '',
         perfil: '',
+        estado: '',
         contraseña: '',
         confirmarcontraseña: ''
     });
 
     //extraer atributos del empleado
     const { tipo, documento, nombres, apellidos, correo, telefono, fecha,
-        perfil, contraseña, confirmarcontraseña, confirmarCorreo } = empleado;
+        perfil, estado, contraseña, confirmarcontraseña, confirmarCorreo } = empleado;
 
     //funcion que lee los inputs
     const onChange = e => {
@@ -220,6 +221,7 @@ const NuevoEmpleado = () => {
             telefono: '',
             fecha: '',
             perfil: '',
+            estado: '',
             contraseña: '',
             confirmarcontraseña: ''
         })
@@ -327,19 +329,6 @@ const NuevoEmpleado = () => {
                                         onChange={onChange}
                                     />
                                 </Grid>
-                                <Grid item xs={12} >
-                                    <TextField
-                                        required
-                                        type="number"
-                                        id="telefono"
-                                        name="telefono"
-                                        label="Celular"
-                                        value={telefono}
-                                        className={classes.root}
-                                        fullWidth
-                                        onChange={onChange} 
-                                    />
-                                </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <InputLabel className={classes.textFecha} id="required-label">Fecha de nacimiento</InputLabel>
                                     <TextField
@@ -384,6 +373,39 @@ const NuevoEmpleado = () => {
                                         </Select>
                                     </FormControl>
                                 </Grid>
+                                <Grid item xs={12}sm={6} >
+                                    <TextField
+                                        required
+                                        type="number"
+                                        id="telefono"
+                                        name="telefono"
+                                        label="Celular"
+                                        value={telefono}
+                                        className={classes.root}
+                                        fullWidth
+                                        onChange={onChange} 
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <FormControl required className={classes.formControl}>
+                                        <InputLabel className={classes.text} id="required-label">
+                                        Estado
+                                        </InputLabel>
+                                        <Select
+                                        required
+                                        labelId="required-label"
+                                        id="select-required"
+                                        value={estado}
+                                        name="estado"
+                                        className={classes.selectEmpty}
+                                        fullWidth
+                                        onChange={onChange}
+                                        >
+                                        <MenuItem value="Activo">Activo</MenuItem>
+                                        <MenuItem value="Inactivo">Inactivo</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                    </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         required
