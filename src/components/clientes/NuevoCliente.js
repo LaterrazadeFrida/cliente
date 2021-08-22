@@ -356,7 +356,7 @@ const NuevoCliente = () => {
                     type="number"
                     id="telefono"
                     name="telefono"
-                    label="Teléfono"
+                    label="Celular"
                     value={telefono}
                     className={classes.root}
                     fullWidth
